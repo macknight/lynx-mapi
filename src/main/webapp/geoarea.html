@@ -1,0 +1,228 @@
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="utf-8" />
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function buildArray(arguString)
+            {
+                var initialResponse = arguString;       
+                /******************************
+                *提取出levels:[]中的字符串
+                *******************************/
+                var unclosedBracketCount = 0;
+                var levelStringBegin = 0;
+                var levelStringEnd = 0;
+                for (var i = 0; i != initialResponse.length; ++i)
+                {
+                    if (initialResponse[i] == '[')
+                    {
+                        unclosedBracketCount++;
+                        if (unclosedBracketCount == 1)
+                            levelStringBegin = i+1;
+                    }
+                    else if (initialResponse[i] == ']')
+                    {
+                        unclosedBracketCount--;
+                        if (unclosedBracketCount == 0)
+                        {
+                            levelStringEnd = i;
+                            break;
+                        }
+                    }
+                }
+                var initialLevelString = initialResponse.slice(levelStringBegin,levelStringEnd);
+
+                /******************************
+                *提取出包含层级关系的节点信息
+                *即levels:[]中各个{}内的字符串
+                *******************************/
+                var levelArray = new Array();
+                var unclosedBraceCount = 0;
+                var levelNodeBeginIndexArray = new Array();
+                var levelNodeEndIndexArray = new Array();
+                for(i = 0; i != initialLevelString.length; ++i)
+                {               
+                    if (initialLevelString[i] == '{')
+                    {
+                        unclosedBraceCount++;
+                        if (unclosedBraceCount == 1)
+                            levelNodeBeginIndexArray.push(i+1);
+                    }
+                    else if (initialLevelString[i] == '}')
+                    {
+                        unclosedBraceCount--;
+                        if (unclosedBraceCount == 0)
+                            levelNodeEndIndexArray.push(i);
+                    }   
+                }
+                for (i = 0; i != levelNodeBeginIndexArray.length; ++i)
+                    levelArray.push(new String(initialLevelString.slice(levelNodeBeginIndexArray[i],levelNodeEndIndexArray[i])));
+                
+                /****************************************************
+                *提取出每个PrimaryNode下next_level_nodes:[]中的信息
+                *即levels:[]中各个{}内next_level_nodes:[]中的字符串
+                ****************************************************/
+                var PrimaryStringArray = new Array(levelArray.length);
+                for (i = 0; i != PrimaryStringArray.length; ++i)
+                {
+                    var unclosedCount = 0;
+                    var beginIndex = 0;
+                    var endIndex = 0;
+                    for(var j = 0; j != levelArray[i].length; ++j)
+                    {
+                        if (levelArray[i][j] == '[')
+                        {
+                            unclosedCount++;
+                            if (unclosedCount == 1)
+                                beginIndex = j+1;
+                        }
+                        else if (levelArray[i][j] == ']')
+                        {
+                            unclosedCount--;
+                            if (unclosedCount == 0)
+                            {
+                                endIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                    PrimaryStringArray[i] = levelArray[i].slice(beginIndex,endIndex);
+                }
+
+                /****************************************************
+                *将每个next_level_nodes:[]中的字符串分割成一个数组
+                ****************************************************/
+                var PrimaryNodeArray = new Array(PrimaryStringArray.length);
+                for (i = 0; i != PrimaryNodeArray.length; ++i)
+                {
+                    PrimaryNodeArray[i] = new Array();
+                    var tempString = PrimaryStringArray[i];
+                    while(tempString.indexOf("text")>0)
+                    {
+                        var index1 = tempString.indexOf("text")+6;
+                        var index2 = tempString.indexOf("display_text")-2;
+                        var index3 = index2+16;
+                        var index4 = index3;
+                        while(tempString[index4] != '"')
+                            ++index4;
+                        var name1 = tempString.slice(index1,index2);
+                        var name2 = tempString.slice(index3,index4);
+                        PrimaryNodeArray[i].push({name_text:name1,name_display_text:name2});
+                        tempString = tempString.slice(index4);
+                    }
+                }
+                return PrimaryNodeArray;
+            }
+
+            function isCityOrProvince(c)
+            {
+                var provinceArray = ["河北省","山西省", "辽宁省", "吉林省", "黑龙江省", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "海南省", "四川省", "贵州省", "云南省", "陕西省", "甘肃省", "青海省", "北京市", "天津市", "上海市", "重庆市", "广西壮族自治区", "内蒙古自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区"];
+                for (var i = 0; i != provinceArray.length; ++i)
+                    if(provinceArray[i].indexOf(c)>0)
+                        return 2;   //说明是省级行政区
+                return 3;           //说明是市级行政区
+            }
+
+            function showProvinceRelation()
+            {
+                var city = document.getElementById("province_name").value;
+                var citytype = isCityOrProvince(city);
+                var result = city+"： \r\n";
+                var myGeo = new BMap.Geocoder();
+                var citylat = 0;
+                var citylng = 0;
+                var cityllstring = "initialString";
+                var url = "initialURL";
+                myGeo.getPoint(city, function(point)
+                {
+                    if (point) 
+                    {
+                        citylat = point.lat;
+                        citylng = point.lng;
+                        cityllstring=point.lat+","+point.lng;
+                        alert("经纬度："+cityllstring);
+                        url="http://ditu.google.cn/maps/br?brtype=2&brstart=0x31508e64e5c642c1:0x951daa7c349f366f&brv=25.1-549461b1_212dafdc_d6d3fe92_88a7ae9f_a1fc3f75&jsv=460c&ll="+cityllstring+"&spn=0,0&z=0&vpsrc=0&hl=zh-CN&gl=cn";
+                        
+                        var xmlhttp=new XMLHttpRequest();
+                        xmlhttp.onreadystatechange=callback; 
+                        xmlhttp.open("GET",url,true);    
+                        xmlhttp.send();
+                        alert("发送请求，请等待！");
+                        function callback()
+                        {
+                            if(xmlhttp.readyState == 4) 
+                            {  
+                                if(xmlhttp.status == 200) 
+                                {  
+                                    alert("已收到响应，解析中！");
+                                    var response = xmlhttp.responseText;   
+                                    var PrimaryArray = buildArray(response);
+                                    for(var i = 0; i != PrimaryArray[2].length; ++i)
+                                    {
+                                        result += (PrimaryArray[2][i].name_text+"\r\n");
+                                    }
+                                    document.getElementById("textResult").innerHTML += (result+"<br>");
+                                }  
+                            }  
+                        }
+                    }
+                }, "中国");   
+            }        
+
+            function showCityRelation()
+            {
+                var city = document.getElementById("city_name").value;
+                var citytype = isCityOrProvince(city);
+                var result = city+"： \r\n";
+                var myGeo = new BMap.Geocoder();
+                var citylat = 0;
+                var citylng = 0;
+                var cityllstring = "initialString";
+                var url = "initialURL";
+                myGeo.getPoint(city, function(point)
+                {
+                    if (point) 
+                    {
+                        citylat = point.lat;
+                        citylng = point.lng;
+                        cityllstring=point.lat+","+point.lng;
+                        alert("经纬度："+cityllstring);
+                        url="http://ditu.google.cn/maps/br?brtype=2&brstart=0x31508e64e5c642c1:0x951daa7c349f366f&brv=25.1-549461b1_212dafdc_d6d3fe92_88a7ae9f_a1fc3f75&jsv=460c&ll="+cityllstring+"&spn=0,0&z=0&vpsrc=0&hl=zh-CN&gl=cn";
+                        
+                        var xmlhttp=new XMLHttpRequest();
+                        xmlhttp.onreadystatechange=callback; 
+                        xmlhttp.open("GET",url,true);    
+                        xmlhttp.send();
+                        alert("发送请求，请等待！");
+                        function callback()
+                        {
+                            if(xmlhttp.readyState == 4) 
+                            {  
+                                if(xmlhttp.status == 200) 
+                                {  
+                                    alert("已收到响应，解析中！");
+                                    var response = xmlhttp.responseText;   
+                                    var PrimaryArray = buildArray(response);
+                                    for(var i = 0; i != PrimaryArray[3].length; ++i)
+                                    {
+                                        result += (PrimaryArray[3][i].name_text+"\r\n");
+                                    }
+                                    document.getElementById("textResult").innerHTML += (result+"<br>");
+                                }  
+                            }  
+                        }
+                    }
+                }, "中国");   
+            }        
+        </script>
+        <form id="Relation_form" method="post" name="RelationForm">
+            省名:<input id="province_name" name="province_name" class="input" type="text" />
+            <input class="submit_btn" onclick="showProvinceRelation()" value="省域显示" type="button" style="float: right;" />
+            市名:<input id="city_name" name="city_name" class="input" type="text" />
+            <input class="submit_btn" onclick="showCityRelation()" value="市域显示" type="button" style="float: right;" />
+        </form>
+        <div id="textResult"></div>
+    </body>
+</html>
