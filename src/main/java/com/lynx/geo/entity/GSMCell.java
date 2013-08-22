@@ -19,11 +19,12 @@ public class GSMCell implements Cell {
     @Expose
     private int asu; // single strength
 
-    public GSMCell(int mcc, int mnc, int lac, int cid) {
+    public GSMCell(int mcc, int mnc, int lac, int cid, int asu) {
         this.mcc = mcc;
         this.mnc = mnc;
         this.lac = lac;
         this.cid = cid;
+        this.asu = asu;
     }
 
     public int getMcc() {

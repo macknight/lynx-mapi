@@ -21,9 +21,6 @@ import java.util.Map;
 @Service("geoService")
 public class GeoServiceImpl extends BasicService implements GeoService {
 
-
-
-
     @Autowired
     private RGCDao rgcDao;
 
@@ -35,6 +32,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 
     @Override
     public Address revGeoCoding(Coord coord) {
+        BMapAPIUtil.revGeoCoding(coord.getGeoPoint());
         return null;
     }
 

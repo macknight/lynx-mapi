@@ -2,12 +2,17 @@ package com.lynx.geo.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lynx.geo.entity.CDMACell;
 import com.lynx.geo.entity.Cell;
+import com.lynx.geo.entity.Cell.CellType;
+import com.lynx.geo.entity.GSMCell;
+import com.lynx.geo.entity.Wifi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,16 +31,71 @@ public class FormatUtil {
     }
 
 
-    public static List<Cell> parseCells(String data) {
+    public static List<Cell> parseCells(CellType type, String data) {
+        List<Cell> cells = null;
+        switch (type) {
+            case CDMA:
+                try {
+                    cells = new ArrayList<Cell>();
+                    String[] tmp = data.split("\\,");
+                    int mcc = Integer.parseInt(tmp[0]);
+                    int sid = Integer.parseInt(tmp[1]);
+                    int nid = Integer.parseInt(tmp[2]);
+                    int bid = Integer.parseInt(tmp[4]);
+                    long lat = Long.parseLong(tmp[5]);
+                    long lng = Long.parseLong(tmp[6]);
+                    CDMACell cdmaCell = new CDMACell(mcc, sid, nid, bid, lat, lng);
+                    cells.add(cdmaCell);
+                } catch (Exception e) {
+                    cells = null;
+                }
+                break;
+            case GSM:
+                try {
+                    String[] tmp1 = data.split("\\:");
+                    String[] headers = tmp1[0].split("\\,");
+                    int mcc = Integer.parseInt(headers[0]);
+                    int mnc = Integer.parseInt(headers[1]);
+                    String[] tmp2 = tmp1[1].split("\\|");
+                    for (String subcell : tmp2) {
+                        try {
+                            String[] tmp3 = subcell.split("\\,");
+                            int lac = Integer.parseInt(tmp3[0]);
+                            int cid = Integer.parseInt(tmp3[1]);
+                            int asu = Integer.parseInt(tmp3[2]);
+                            GSMCell gsmCell = new GSMCell(mcc, mnc, lac, cid, asu);
+                            cells.add(gsmCell);
+                        } catch (Exception e) {
 
-        try {
-
-        } catch (Exception e) {
-
+                        }
+                    }
+                } catch (Exception e) {
+                    cells = null;
+                }
+                break;
+            default:
+                cells = null;
+                break;
         }
-        return null;
+        return cells;
     }
 
+    public static List<Wifi> parseWifi(String data) {
+        List<Wifi> wifis = null;
+        try {
+            String[] tmp1 = data.split("\\|");
+            wifis = new ArrayList<Wifi>();
+            for (String tmp : tmp1) {
+                String[] tmp2 = tmp.split("\\,");
+                int dbm = Integer.parseInt(tmp2[2]);
+                Wifi wifi = new Wifi(tmp2[0], tmp2[1], dbm);
+                wifis.add(wifi);
+            }
+        } catch (Exception e) {
+            wifis = null;
+        }
+        return wifis;
+    }
 
     public static String stream2string(InputStream instream, String encoding) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

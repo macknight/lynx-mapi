@@ -24,7 +24,7 @@ public class BMapAPIUtil {
 
 
     public static String revGeoCoding(GeoPoint geoPoint) {
-        String url = String.format(BMAP_API_GEOCODING_URL, BMAP_API_KEY, geoPoint.getLat(), geoPoint.getLng());
+        String url = String.format(BMAP_API_REVGEOCODING_URL, BMAP_API_KEY, geoPoint.getLat(), geoPoint.getLng());
         Address result = null;
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(url);
@@ -34,9 +34,12 @@ public class BMapAPIUtil {
             if (httpResp.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 instream = httpResp.getEntity().getContent();
                 String tmp = FormatUtil.stream2string(instream, "UTF-8");
+                tmp = tmp.substring(29, tmp.length() - 1);
                 System.out.println(tmp);
                 JSONObject jo = new JSONObject(tmp);
+                if (jo.getInt("status") == 0) {
 
+                }
             } else {
 
             }

@@ -3,6 +3,7 @@ package com.lynx.test.geo;
 import com.lynx.geo.entity.Address;
 import com.lynx.geo.entity.GeoPoint;
 import com.lynx.geo.service.GeoService;
+import com.lynx.geo.util.BMapAPIUtil;
 import com.lynx.geo.util.FormatUtil;
 import com.lynx.geo.util.GMapAPIUtil;
 import com.lynx.test.BasicTest;
@@ -22,7 +23,7 @@ public class GeoServiceTest extends BasicTest {
 
     @Test
     public void bmapGeoCodingTest() {
-        Address addr = new Address("中国", "上海市", "上海市", "长宁区", "安化路", 492);
+        Address addr = new Address("中国", "上海市", "上海市", "长宁区", "安化路", 492, null);
         GeoPoint result = geoService.geoCoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
@@ -59,7 +60,8 @@ public class GeoServiceTest extends BasicTest {
 
     @Test
     public void bmapRevGeoCodingTest() {
-        GeoPoint gepPoint = new GeoPoint(31.483424, 121.322987);
+        GeoPoint geoPoint = new GeoPoint(31.222784, 121.340507);
+        BMapAPIUtil.revGeoCoding(geoPoint);
     }
 
 

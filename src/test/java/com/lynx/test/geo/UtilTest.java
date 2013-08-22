@@ -15,6 +15,10 @@ public class UtilTest {
         String unicode = "\\u9053\\u8def";
         String str = FormatUtil.fromUnicode(unicode);
         System.out.println(str);
+
+
+        String tmp = "renderReverse&&renderReverse({})";
+        System.out.println(tmp.substring(29, tmp.length() - 1));
     }
 
 }

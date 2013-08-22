@@ -20,18 +20,21 @@ public class Address {
     private String street; // 街道
     @Expose
     private Integer num; // 门牌号
+    @Expose
+    private String bizRegion; // 所属商圈
 
     public Address() {
 
     }
 
-    public Address(String country, String province, String city, String subCity, String street, Integer num) {
+    public Address(String country, String province, String city, String subCity, String street, Integer num, String bizRegion) {
         this.country = country;
         this.province = province;
         this.city = city;
         this.subCity = subCity;
         this.street = street;
         this.num = num;
+        this.bizRegion = bizRegion;
     }
 
     public String getCountry() {
@@ -80,5 +83,13 @@ public class Address {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public String getBizRegion() {
+        return bizRegion;
+    }
+
+    public void setBizRegion(String bizRegion) {
+        this.bizRegion = bizRegion;
     }
 }
