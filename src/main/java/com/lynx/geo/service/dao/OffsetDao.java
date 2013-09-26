@@ -10,15 +10,11 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface OffsetDao {
 
-    GeoPoint getGPS2MapbarOffset(@Param(value = "lat") double lat,
-                                     @Param(value = "lng") double lng);
+    GeoPoint getGPS2MapbarOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 
-    GeoPoint getGPS2GMapOffset(@Param(value = "lat") double lat,
-                                  @Param(value = "lng") double lng);
+    GeoPoint getGPS2GMapOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 
-    GeoPoint getGPS2BMapOffset(@Param(value = "lat") double lat,
-                                 @Param(value = "lng") double lng);
+    GeoPoint getGPS2BMapOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 
-    GeoPoint getGPS2AMapOffset(@Param(value = "lat") double lat,
-                                @Param(value = "lng") double lng);
+    GeoPoint getGPS2AMapOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 }

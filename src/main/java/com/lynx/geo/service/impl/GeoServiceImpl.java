@@ -31,13 +31,13 @@ public class GeoServiceImpl extends BasicService implements GeoService {
     }
 
     @Override
-    public Address revGeoCoding(Coord coord) {
-        BMapAPIUtil.revGeoCoding(coord.getGeoPoint());
+    public Address revGeocoding(Coord coord) {
+        BMapAPIUtil.revGeocoding(coord.getGeoPoint());
         return null;
     }
 
     @Override
-    public GeoPoint geoCoding(Address address) {
+    public GeoPoint geocoding(Address address) {
         String addr = "";
         addr = address.getCountry() == null ? addr : String.format("%s%s", addr, address.getCountry());
         addr = address.getProvince() == null ? addr : String.format("%s%s", addr, address.getProvince());
@@ -45,7 +45,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
         addr = address.getSubCity() == null ? addr : String.format("%s%s", addr, address.getSubCity());
         addr = address.getStreet() == null ? addr : String.format("%s%s", addr, address.getStreet());
         addr = address.getNum() == null ? addr : String.format("%s%s", addr, address.getNum());
-        return BMapAPIUtil.geoCoding(addr);
+        return BMapAPIUtil.geocoding(addr);
     }
 
     @Override

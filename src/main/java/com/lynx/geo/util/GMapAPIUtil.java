@@ -91,7 +91,7 @@ public class GMapAPIUtil {
         }
         List<GeoArea> gaProvinces = new ArrayList<GeoArea>();
         for (String province : provinces) {
-            GeoPoint cityCenter = BMapAPIUtil.geoCoding(province);
+            GeoPoint cityCenter = BMapAPIUtil.geocoding(province);
             if (cityCenter == null) {
                 continue;
             }
@@ -101,7 +101,7 @@ public class GMapAPIUtil {
             }
             List<GeoArea> gaCities = new ArrayList<GeoArea>();
             for (String city : cities) {
-                GeoPoint subCityCenter = BMapAPIUtil.geoCoding(city);
+                GeoPoint subCityCenter = BMapAPIUtil.geocoding(city);
                 List<String> subCities = GMapAPIUtil.geoarea(subCityCenter, 3);
                 if (subCities == null || subCities.size() == 0) {
                     continue;

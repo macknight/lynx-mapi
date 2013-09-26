@@ -23,7 +23,7 @@ public interface GeoService {
      * @param coord
      * @return
      */
-    Address revGeoCoding(Coord coord);
+    Address revGeocoding(Coord coord);
 
     /**
      * 地址解析
@@ -31,7 +31,7 @@ public interface GeoService {
      * @param address
      * @return
      */
-    GeoPoint geoCoding(Address address);
+    GeoPoint geocoding(Address address);
 
 
     List<Coord> locate(List<Cell> cells, List<Wifi> wifis, Map<CoordSource, Coord> coords);

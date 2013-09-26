@@ -24,35 +24,35 @@ public class GeoServiceTest extends BasicTest {
     @Test
     public void bmapGeoCodingTest() {
         Address addr = new Address("中国", "上海市", "上海市", "长宁区", "安化路", 492, null);
-        GeoPoint result = geoService.geoCoding(addr);
+        GeoPoint result = geoService.geocoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
         }
 
         addr = new Address();
         addr.setCity("中国");
-        result = geoService.geoCoding(addr);
+        result = geoService.geocoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
         }
 
         addr = new Address();
         addr.setCity("上海");
-        result = geoService.geoCoding(addr);
+        result = geoService.geocoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
         }
 
         addr = new Address();
         addr.setCity("合肥");
-        result = geoService.geoCoding(addr);
+        result = geoService.geocoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
         }
 
         addr = new Address();
         addr.setCity("重庆");
-        result = geoService.geoCoding(addr);
+        result = geoService.geocoding(addr);
         if (result != null) {
             System.out.println(FormatUtil.format(result));
         }
@@ -61,7 +61,7 @@ public class GeoServiceTest extends BasicTest {
     @Test
     public void bmapRevGeoCodingTest() {
         GeoPoint geoPoint = new GeoPoint(31.222784, 121.340507);
-        BMapAPIUtil.revGeoCoding(geoPoint);
+        BMapAPIUtil.revGeocoding(geoPoint);
     }
 
 

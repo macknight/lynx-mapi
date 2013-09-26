@@ -13,7 +13,7 @@ import org.apache.struts2.json.annotations.JSON;
 public class UserAction extends ActionSupport {
     private User user;
 
-    @JSON(name="User")
+    @JSON(name = "User")
     public User getUser() {
         return user;
     }

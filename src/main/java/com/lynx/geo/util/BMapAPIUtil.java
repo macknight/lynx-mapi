@@ -23,7 +23,7 @@ public class BMapAPIUtil {
     private static final String BMAP_API_REVGEOCODING_URL = "http://api.map.baidu.com/geocoder/v2/?ak=%s&callback=renderReverse&location=%s,%s&output=json&pois=1";
 
 
-    public static String revGeoCoding(GeoPoint geoPoint) {
+    public static String revGeocoding(GeoPoint geoPoint) {
         String url = String.format(BMAP_API_REVGEOCODING_URL, BMAP_API_KEY, geoPoint.getLat(), geoPoint.getLng());
         Address result = null;
         HttpClient httpClient = new DefaultHttpClient();
@@ -63,7 +63,7 @@ public class BMapAPIUtil {
         return null;
     }
 
-    public static GeoPoint geoCoding(String address) {
+    public static GeoPoint geocoding(String address) {
         String url = String.format(BMAP_API_GEOCODING_URL, address, BMAP_API_KEY);
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(url);

@@ -46,7 +46,7 @@ public class GeoInfoController {
 
     @RequestMapping(value = "/lbsAd", method = RequestMethod.POST)
     public ResponseEntity<String> lbsAd(@RequestParam("lat") double lat,
-                                      @RequestParam("lng") double lng) {
+                                        @RequestParam("lng") double lng) {
         String result = null;
         try {
 

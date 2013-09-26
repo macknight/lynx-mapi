@@ -21,7 +21,7 @@ public class OffsetServiceTest extends BasicTest {
     @Test
     public void gps2AMapTest() {
         GeoPoint origin = new GeoPoint();
-        GeoPoint offset =  offsetService.offset(origin, CoordType.GPS, CoordType.GAODE);
+        GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.GAODE);
         if (offset != null) {
             System.out.println(FormatUtil.format(offset));
         }
@@ -30,7 +30,7 @@ public class OffsetServiceTest extends BasicTest {
     @Test
     public void gps2BMapTest() {
         GeoPoint origin = new GeoPoint();
-        GeoPoint offset =  offsetService.offset(origin, CoordType.GPS, CoordType.BAIDU);
+        GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.BAIDU);
         if (offset != null) {
             System.out.println(FormatUtil.format(offset));
         }
@@ -39,7 +39,7 @@ public class OffsetServiceTest extends BasicTest {
     @Test
     public void gps2GMapTest() {
         GeoPoint origin = new GeoPoint();
-        GeoPoint offset =  offsetService.offset(origin, CoordType.GPS, CoordType.GOOGLE);
+        GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.GOOGLE);
         if (offset != null) {
             System.out.println(FormatUtil.format(offset));
         }
@@ -48,7 +48,7 @@ public class OffsetServiceTest extends BasicTest {
     @Test
     public void gps2MapbarTest() {
         GeoPoint origin = new GeoPoint();
-        GeoPoint offset =  offsetService.offset(origin, CoordType.GPS, CoordType.MAPBAR);
+        GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.MAPBAR);
         if (offset != null) {
             System.out.println(FormatUtil.format(offset));
         }
