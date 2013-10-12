@@ -1,14 +1,14 @@
 package com.lynx.geo.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.lynx.geo.entity.Address;
+import com.lynx.geo.entity.Cell;
 import com.lynx.geo.entity.Coord;
 import com.lynx.geo.entity.Coord.CoordSource;
 import com.lynx.geo.entity.GeoPoint;
 import com.lynx.geo.entity.Wifi;
-import javafx.scene.control.Cell;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
