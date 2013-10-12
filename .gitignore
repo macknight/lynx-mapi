@@ -1,3 +1,6 @@
 .idea/
 geoinfo-web.iml
 target/
+.settings/
+.classpath
+.project
