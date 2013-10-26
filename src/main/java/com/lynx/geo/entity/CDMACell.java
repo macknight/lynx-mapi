@@ -82,4 +82,9 @@ public class CDMACell implements Cell {
     public CellType type() {
         return CellType.CDMA;
     }
+
+	@Override
+	public String toLogStr() {
+		return String.format("%s,%s,%s,%s", mcc, sid, nid, bid);
+	}
 }

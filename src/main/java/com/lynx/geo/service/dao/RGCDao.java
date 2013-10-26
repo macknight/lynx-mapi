@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface RGCDao {
 
-    Address getAddress(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
+    Address getAddress(@Param(value = "lat") double lat,
+                       @Param(value = "lng") double lng);
 
 }

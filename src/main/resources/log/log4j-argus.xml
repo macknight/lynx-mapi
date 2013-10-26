@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration SYSTEM "log4j.dtd">
 <log4j:configuration debug="false">
 
-    <appender name="accountAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/data/argus-server/account.log"/>
+    <appender name="LocateAppender" class="org.apache.log4j.FileAppender">
+        <param name="File" value="/data/lynx-web/locate.log"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]-[%m]%n"/>
         </layout>
     </appender>
 
-    <logger name="account-log" additivity="false">
+    <logger name="locate-log" additivity="false">
         <level value="INFO"/>
-        <appender-ref ref="accountAppender"/>
+        <appender-ref ref="LocateAppender"/>
     </logger>
 
+	<appender name="RGCAppender" class="org.apache.log4j.FileAppender">
+		<param name="File" value="/data/lynx-web/locate.log"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}]-[%m]%n"/>
+		</layout>
+	</appender>
+
+	<logger name="rgc-log" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="RGCAppender"/>
+	</logger>
+
     <appender name="rootAppender" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="/data/argus-server/root.log"/>
+        <param name="File" value="/data/lynx-web/root.log"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%p][%d{yyyy-MM-dd HH:mm:ss}]-[%m]%n"/>
         </layout>

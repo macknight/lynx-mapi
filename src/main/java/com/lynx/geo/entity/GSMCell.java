@@ -71,4 +71,9 @@ public class GSMCell implements Cell {
     public CellType type() {
         return CellType.GSM;
     }
+
+	@Override
+	public String toLogStr() {
+		return String.format("%s,%s,%s,%s", mcc, mnc, lac, cid);
+	}
 }

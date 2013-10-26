@@ -1,9 +1,9 @@
 package com.lynx.test.geo;
 
+import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.Coord.CoordType;
 import com.lynx.geo.entity.GeoPoint;
 import com.lynx.geo.service.OffsetService;
-import com.lynx.geo.util.FormatUtil;
 import com.lynx.test.BasicTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class OffsetServiceTest extends BasicTest {
         GeoPoint origin = new GeoPoint();
         GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.GAODE);
         if (offset != null) {
-            System.out.println(FormatUtil.format(offset));
+            System.out.println(EncryptUtil.format(offset));
         }
     }
 
@@ -32,7 +32,7 @@ public class OffsetServiceTest extends BasicTest {
         GeoPoint origin = new GeoPoint();
         GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.BAIDU);
         if (offset != null) {
-            System.out.println(FormatUtil.format(offset));
+            System.out.println(EncryptUtil.format(offset));
         }
     }
 
@@ -41,7 +41,7 @@ public class OffsetServiceTest extends BasicTest {
         GeoPoint origin = new GeoPoint();
         GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.GOOGLE);
         if (offset != null) {
-            System.out.println(FormatUtil.format(offset));
+            System.out.println(EncryptUtil.format(offset));
         }
     }
 
@@ -50,7 +50,7 @@ public class OffsetServiceTest extends BasicTest {
         GeoPoint origin = new GeoPoint();
         GeoPoint offset = offsetService.offset(origin, CoordType.GPS, CoordType.MAPBAR);
         if (offset != null) {
-            System.out.println(FormatUtil.format(offset));
+            System.out.println(EncryptUtil.format(offset));
         }
     }
 }

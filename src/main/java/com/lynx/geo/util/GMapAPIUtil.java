@@ -1,6 +1,7 @@
 package com.lynx.geo.util;
 
 import com.google.gson.annotations.Expose;
+import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.GeoPoint;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -155,7 +156,7 @@ public class GMapAPIUtil {
 
         @Override
         public String toString() {
-            return FormatUtil.format(this);
+            return EncryptUtil.format(this);
         }
     }
 }

@@ -1,7 +1,5 @@
 package com.lynx.geo.util;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.lynx.geo.entity.CDMACell;
 import com.lynx.geo.entity.Cell;
 import com.lynx.geo.entity.Cell.CellType;
@@ -22,15 +20,6 @@ import java.util.List;
  */
 public class FormatUtil {
 
-    private static Gson gson = null;
-
-    static {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-        gson = gsonBuilder.create();
-    }
-
-
     public static List<Cell> parseCells(CellType type, String data) {
         List<Cell> cells = null;
         switch (type) {
@@ -41,9 +30,9 @@ public class FormatUtil {
                     int mcc = Integer.parseInt(tmp[0]);
                     int sid = Integer.parseInt(tmp[1]);
                     int nid = Integer.parseInt(tmp[2]);
-                    int bid = Integer.parseInt(tmp[4]);
-                    long lat = Long.parseLong(tmp[5]);
-                    long lng = Long.parseLong(tmp[6]);
+                    int bid = Integer.parseInt(tmp[3]);
+                    long lat = Long.parseLong(tmp[4]);
+                    long lng = Long.parseLong(tmp[5]);
                     CDMACell cdmaCell = new CDMACell(mcc, sid, nid, bid, lat, lng);
                     cells.add(cdmaCell);
                 } catch (Exception e) {
@@ -107,9 +96,7 @@ public class FormatUtil {
         return new String(baos.toByteArray(), encoding);
     }
 
-    public static String format(Object obj) {
-        return gson.toJson(obj);
-    }
+
 
     public static String fromUnicode(String unicode) {
         char ch;

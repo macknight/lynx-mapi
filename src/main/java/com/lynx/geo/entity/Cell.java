@@ -14,6 +14,8 @@ public interface Cell {
      */
     CellType type();
 
+	String toLogStr();
+
 
     public enum CellType {
         UNKNOWN, GSM, CDMA
