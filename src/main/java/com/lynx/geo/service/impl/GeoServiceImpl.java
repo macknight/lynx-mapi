@@ -237,8 +237,8 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 		}
 		String str = "";
 		for (Wifi wifi : wifis) {
-			str = String.format("%s|%s", wifi.toString());
+			str = String.format("%s|%s", str, wifi.toString());
 		}
-		return str.substring(1);
+		return String.format("wifi=%s", str.substring(1));
 	}
 }
