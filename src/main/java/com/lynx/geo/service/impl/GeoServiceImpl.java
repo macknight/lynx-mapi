@@ -8,7 +8,6 @@ import com.lynx.geo.service.dao.RGCDao;
 import com.lynx.geo.util.BMapAPIUtil;
 import com.lynx.geo.util.GeoUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +31,8 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 	@Autowired
 	private RGCDao rgcDao;
 
-	private Logger locateLog = Logger.getLogger("locate-log");
-	private Logger rgcLog = Logger.getLogger("rgc-log");
+//	private Logger locateLog = Logger.getLogger("locate-log");
+//	private Logger rgcLog = Logger.getLogger("rgc-log");
 
 	@PostConstruct
 	private void init() {
@@ -60,7 +59,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 
 	@Override
 	public List<GeoPoint> locate(List<Cell> cells, List<Wifi> wifis, List<Coord> coords) {
-		locate2log(cells, wifis, coords);
+//		locate2log(cells, wifis, coords);
 
 		List<GeoPoint> result = new ArrayList<GeoPoint>();
 
@@ -216,7 +215,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 			}
 		}
 
-		locateLog.info(sb.toString());
+//		locateLog.info(sb.toString());
 	}
 
 	private String cells2log(List<Cell> cells) {

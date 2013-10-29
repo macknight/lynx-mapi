@@ -19,9 +19,21 @@
         <property name="defaultAutoCommit" value="true"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:config/mapper/mapper-config.xml"/>
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+
+
+	<bean id="cbDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	      destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url"
+		          value="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com/LynxMobi?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"/>
+		<property name="username" value="devdev"/>
+		<property name="password" value="123456"/>
+		<property name="maxActive" value="100"/>
+		<property name="maxIdle" value="30"/>
+		<property name="maxWait" value="500"/>
+		<property name="defaultAutoCommit" value="true"/>
+	</bean>
+
+
 
 </beans>

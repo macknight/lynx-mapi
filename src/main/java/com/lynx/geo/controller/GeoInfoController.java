@@ -1,6 +1,6 @@
 package com.lynx.geo.controller;
 
-import com.lynx.core.BaseController;
+import com.lynx.core.BasicController;
 import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.Cell;
@@ -28,7 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/geo", method = RequestMethod.POST,
 		produces = "text/plain;charset=UTF-8")
-public class GeoInfoController extends BaseController {
+public class GeoInfoController extends BasicController {
 
 	@Autowired
 	private GeoService geoService;

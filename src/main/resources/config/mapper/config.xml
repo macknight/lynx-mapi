@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lynx.config.service.dao.ConfigDao">
 
+	<resultMap id="configResult" type="com.lynx.config.service.entity.ConfigEntity">
+		<result property="module" column="Module"/>
+		<result property="clazz" column="Clazz"/>
+		<result property="version" column="Version"/>
+		<result property="url" column="url"/>
+		<result property="md5" column="MD5"/>
+		<result property="desc" column="Desc"/>
+	</resultMap>
+
+	<select id="getAndroidUIConfig" resultMap="configResult">
+		SELECT Module, Clazz, Version, URL, MD5, `Desc`
+		FROM LM_FrameworkConfig WHERE Domain=0;
+	</select>
+
+	<select id="getAndroidServiceConfig" resultMap="configResult">
+		SELECT Module, Clazz, Version, URL, MD5, `Desc`
+		FROM LM_FrameworkConfig WHERE Domain=1;
+	</select>
 
 </mapper>
