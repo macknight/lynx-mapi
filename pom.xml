@@ -29,18 +29,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Struts2相关依赖 -->
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>${org.apache.struts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-spring-plugin</artifactId>
-            <version>${org.apache.struts.version}</version>
-        </dependency>
-
         <!-- mybatis相关依赖 -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -106,6 +94,11 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.1</version>
         </dependency>
 
         <!-- 加密算法支持 -->

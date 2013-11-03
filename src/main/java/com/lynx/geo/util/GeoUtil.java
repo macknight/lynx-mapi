@@ -1,6 +1,7 @@
 package com.lynx.geo.util;
 
 import com.lynx.geo.entity.GeoPoint;
+import com.lynx.geo.entity.Location;
 
 import java.util.StringTokenizer;
 
@@ -11,6 +12,10 @@ import java.util.StringTokenizer;
  */
 public class GeoUtil {
 	public static final double EARTH_RADIUS = 6371000;
+
+    public static double distanceTo(Location loc1, Location loc2) {
+        return distanceTo(loc1.getLat(), loc1.getLng(), loc2.getLat(), loc2.getLng());
+    }
 
 	public static double distanceTo(GeoPoint g1, GeoPoint g2) {
 		return distanceTo(g1.getLat(), g1.getLng(), g2.getLat(), g2.getLng());

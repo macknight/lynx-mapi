@@ -28,6 +28,6 @@ public interface GeoService {
     GeoPoint geocoding(Address address);
 
 
-    List<GeoPoint> locate(List<Cell> cells, List<Wifi> wifis, List<Coord> coords);
+    List<Location> location(List<Cell> cells, List<Wifi> wifis, List<Coord> coords);
 
 }

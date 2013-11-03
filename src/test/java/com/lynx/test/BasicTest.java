@@ -1,5 +1,6 @@
 package com.lynx.test;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -15,5 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         "classpath*:config/spring/appcontext-*.xml"
 })
 public class BasicTest {
-
+    static {
+        DOMConfigurator.configure("target/classes/log/log4j-argus.xml");
+    }
 }

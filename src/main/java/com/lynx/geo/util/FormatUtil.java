@@ -1,10 +1,7 @@
 package com.lynx.geo.util;
 
-import com.lynx.geo.entity.CDMACell;
-import com.lynx.geo.entity.Cell;
+import com.lynx.geo.entity.*;
 import com.lynx.geo.entity.Cell.CellType;
-import com.lynx.geo.entity.GSMCell;
-import com.lynx.geo.entity.Wifi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,6 +17,13 @@ import java.util.List;
  */
 public class FormatUtil {
 
+    /**
+     * parse cell from incoming data
+     *
+     * @param type
+     * @param data
+     * @return
+     */
     public static List<Cell> parseCells(CellType type, String data) {
         List<Cell> cells = null;
         switch (type) {
@@ -41,22 +45,17 @@ public class FormatUtil {
                 break;
             case GSM:
                 try {
-                    String[] tmp1 = data.split("\\:");
-                    String[] headers = tmp1[0].split("\\,");
-                    int mcc = Integer.parseInt(headers[0]);
-                    int mnc = Integer.parseInt(headers[1]);
-                    String[] tmp2 = tmp1[1].split("\\|");
-                    for (String subcell : tmp2) {
-                        try {
-                            String[] tmp3 = subcell.split("\\,");
-                            int lac = Integer.parseInt(tmp3[0]);
-                            int cid = Integer.parseInt(tmp3[1]);
-                            int asu = Integer.parseInt(tmp3[2]);
-                            GSMCell gsmCell = new GSMCell(mcc, mnc, lac, cid, asu);
-                            cells.add(gsmCell);
-                        } catch (Exception e) {
-
-                        }
+                    cells = new ArrayList<Cell>();
+                    String[] tmp1 = data.split("\\|");
+                    for (String tmp2 : tmp1) {
+                        String[] tmp3 = tmp2.split("\\,");
+                        int mcc = Integer.parseInt(tmp3[0]);
+                        int mnc = Integer.parseInt(tmp3[1]);
+                        int lac = Integer.parseInt(tmp3[2]);
+                        int cid = Integer.parseInt(tmp3[3]);
+                        int asu = Integer.parseInt(tmp3[4]);
+                        GSMCell gsmCell = new GSMCell(mcc, mnc, lac, cid, asu);
+                        cells.add(gsmCell);
                     }
                 } catch (Exception e) {
                     cells = null;
@@ -69,6 +68,12 @@ public class FormatUtil {
         return cells;
     }
 
+    /**
+     * parse wifi from incoming data
+     *
+     * @param data
+     * @return
+     */
     public static List<Wifi> parseWifi(String data) {
         List<Wifi> wifis = null;
         try {
@@ -86,6 +91,33 @@ public class FormatUtil {
         return wifis;
     }
 
+    /**
+     * convert str with format province|city|region|street|streeNo to Address object
+     *
+     * @param str
+     * @return
+     */
+    public static Address str2address(String str) {
+        try {
+            String[] tmp = str.split("\\|");
+            return new Address(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4]);
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+    /**
+     * convert address object to str with format province|city|region|street|streeNo
+     *
+     * @param addr
+     * @return
+     */
+    public static String address2str(Address addr) {
+        return String.format("%s|%s|%s|%s|%s", addr.getProvince(),
+                addr.getCity(), addr.getRegion(), addr.getStreet(), addr.getNum());
+    }
+
     public static String stream2string(InputStream instream, String encoding) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int i = -1;
@@ -95,8 +127,6 @@ public class FormatUtil {
 
         return new String(baos.toByteArray(), encoding);
     }
-
-
 
     public static String fromUnicode(String unicode) {
         char ch;
@@ -202,7 +232,13 @@ public class FormatUtil {
         return false;
     }
 
-    public static String string2Unicode(String s) {
+    /**
+     * 将string转为unicode字串
+     *
+     * @param s
+     * @return
+     */
+    public static String string2unicode(String s) {
         try {
             StringBuffer out = new StringBuffer("");
             byte[] bytes = s.getBytes("unicode");
@@ -225,7 +261,13 @@ public class FormatUtil {
         }
     }
 
-    public static String unicode2String(String unicodeStr) {
+    /**
+     * 将unicode字串转为string
+     *
+     * @param unicodeStr
+     * @return
+     */
+    public static String unicode2string(String unicodeStr) {
         StringBuffer sb = new StringBuffer();
         String str[] = unicodeStr.toUpperCase().split("U");
         for (int i = 0; i < str.length; i++) {
@@ -236,4 +278,9 @@ public class FormatUtil {
         return sb.toString();
     }
 
+
+    public static double format(double dout, int n) {
+        double p = Math.pow(10, n);
+        return Math.round(dout * p) / p;
+    }
 }

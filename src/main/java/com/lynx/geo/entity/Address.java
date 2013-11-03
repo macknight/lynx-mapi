@@ -9,41 +9,27 @@ import com.google.gson.annotations.Expose;
  */
 public class Address {
     @Expose
-    private String country; // 国家
-    @Expose
     private String province; // 省份
     @Expose
     private String city; //城市
     @Expose
-    private String subCity; // 城区信息
+    private String region; // 城区信息
     @Expose
     private String street; // 街道
     @Expose
-    private Integer num; // 门牌号
-    @Expose
-    private String bizRegion; // 所属商圈
+    private String num; // 门牌号
 
     public Address() {
 
     }
 
-    public Address(String country, String province, String city, String subCity,
-                   String street, Integer num, String bizRegion) {
-        this.country = country;
+    public Address(String province, String city, String region,
+                   String street, String num) {
         this.province = province;
         this.city = city;
-        this.subCity = subCity;
+        this.region = region;
         this.street = street;
         this.num = num;
-        this.bizRegion = bizRegion;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public String getProvince() {
@@ -62,12 +48,12 @@ public class Address {
         this.city = city;
     }
 
-    public String getSubCity() {
-        return subCity;
+    public String getRegion() {
+        return region;
     }
 
-    public void setSubCity(String subCity) {
-        this.subCity = subCity;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getStreet() {
@@ -78,19 +64,12 @@ public class Address {
         this.street = street;
     }
 
-    public Integer getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(String num) {
         this.num = num;
     }
 
-    public String getBizRegion() {
-        return bizRegion;
-    }
-
-    public void setBizRegion(String bizRegion) {
-        this.bizRegion = bizRegion;
-    }
 }

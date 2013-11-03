@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lynx.geo.service.dao.LocationDao">
+    <resultMap id="locationResult" type="com.lynx.geo.service.entity.LocationPo">
+        <result property="lat" column="Lat"/>
+        <result property="lng" column="Lng"/>
+        <result property="acc" column="Acc"/>
+        <result property="addr" column="Addr"/>
+    </resultMap>
+
+    <select id="getCDMALocation" resultMap="locationResult">
+        SELECT Lat, Lng, Acc, Addr FROM LM_CDMACoord
+        WHERE MCC=#{mcc} AND SID=#{sid} AND NID=#{nid} AND BID=#{bid}
+    </select>
+
+    <select id="getGSMLocation" resultMap="locationResult">
+        SELECT Lat, Lng, Acc, Addr FROM LM_GSMCoord
+        WHERE MCC=#{mcc} AND MNC=#{mnc} AND LAC=#{lac} AND CID=#{cid}
+    </select>
+
+    <select id="getWifiLocation" resultMap="locationResult">
+        SELECT Lat, Lng, Acc FROM LM_WifiCoord
+        WHERE Mac IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="updateCDMAAddress">
+        UPDATE LM_CDMACoord SET Addr=#{addr}
+        WHERE MCC=#{mcc} AND SID=#{sid} AND NID=#{nid} AND BID=#{bid}
+    </update>
+
+    <update id="updateGSMAddress">
+        UPDATE LM_GSMCoord SET Addr=#{addr} WHERE
+        MCC=#{mcc} AND MNC=#{mnc} AND LAC=#{lac} AND CID=#{cid}
+    </update>
+</mapper>
