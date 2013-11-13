@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lynx.plugin.service.dao.PluginStoreDao">
+	<resultMap id="pluginResult" type="com.lynx.plugin.entity.Plugin">
+		<result property="name" column="Name"/>
+		<result property="icon" column="Icon"/>
+		<result property="desc" column="Desc"/>
+		<result property="url" column="Url"/>
+		<result property="md5" column="MD5"/>
+		<result property="clazz" column="Clazz"/>
+		<result property="category" column="Category"/>
+	</resultMap>
+
+	<select id="getAllPlugins" resultMap="pluginResult">
+		SELECT Name, Icon, `Desc`, Url, MD5, Clazz, Category
+		FROM LM_PluginStore
+	</select>
+
+	<select id="getPluginByCategory" resultMap="pluginResult">
+		SELECT Name, Icon, `Desc`, Url, MD5, Clazz, Category
+		FROM LM_PluginStore WHERE Category=#{category}
+	</select>
+
+	<select id="getAllPluginByKeyword" resultMap="pluginResult">
+		SELECT Name, Icon, `Desc`, Url, MD5, Clazz, Category
+		FROM LM_PluginStore WHERE Name LIKE #{keyword}
+	</select>
+</mapper>
