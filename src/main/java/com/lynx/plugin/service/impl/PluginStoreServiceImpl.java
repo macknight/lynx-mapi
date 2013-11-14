@@ -20,12 +20,12 @@ public class PluginStoreServiceImpl implements PluginStoreService {
 	private PluginStoreDao pluginStoreDao;
 
 	@Override
-	public List<Plugin> getAllPlugins() {
+	public List<Plugin> allPlugins() {
 		return pluginStoreDao.getAllPlugins();
 	}
 
 	@Override
-	public List<Plugin> getPluginByCategory(int category) {
+	public List<Plugin> pluginByCategory(int category) {
 		return pluginStoreDao.getPluginByCategory(category);
 	}
 

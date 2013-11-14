@@ -16,7 +16,7 @@ public interface PluginStoreService {
 	 *
 	 * @return
 	 */
-	List<Plugin> getAllPlugins();
+	List<Plugin> allPlugins();
 
 	/**
 	 * 根据类别获取插件
@@ -24,7 +24,7 @@ public interface PluginStoreService {
 	 * @param category
 	 * @return
 	 */
-	List<Plugin> getPluginByCategory(int category);
+	List<Plugin> pluginByCategory(int category);
 
 	/**
 	 * 根据关键字获取插件

@@ -30,7 +30,7 @@ public class PluginStoreController extends BasicController {
 	public ResponseEntity<String> getPlguins() {
 		Result result = null;
 		try {
-			List<Plugin> plugins = pluginStoreService.getAllPlugins();
+			List<Plugin> plugins = pluginStoreService.allPlugins();
 			if (plugins != null && plugins.size() > 0) {
 				result = new Result(Result.RS_OK, plugins);
 			} else {
