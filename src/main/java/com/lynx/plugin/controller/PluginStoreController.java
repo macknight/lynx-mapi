@@ -20,15 +20,14 @@ import java.util.List;
  * Date: 13-11-13 下午5:34
  */
 @Controller
-@RequestMapping(value = "/pluginstore", method = RequestMethod.POST,
-		produces = "text/plain;charset=UTF-8")
 public class PluginStoreController extends BasicController {
 
 	@Autowired
 	private PluginStoreService pluginStoreService;
 
-	@RequestMapping(value = "/allplugin")
-	public ResponseEntity<String> location() {
+    @RequestMapping(value = "/pluginstore", method = RequestMethod.POST,
+            produces = "text/plain;charset=UTF-8")
+	public ResponseEntity<String> getPlguins() {
 		Result result = null;
 		try {
 			List<Plugin> plugins = pluginStoreService.getAllPlugins();
