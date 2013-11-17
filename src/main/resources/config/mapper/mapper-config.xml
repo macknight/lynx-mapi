@@ -6,6 +6,6 @@
 		<mapper resource="config/mapper/location.xml"/>
 		<mapper resource="config/mapper/rgc.xml"/>
 		<mapper resource="config/mapper/offset.xml"/>
-		<mapper resource="config/mapper/pluginstore.xml"/>
+		<mapper resource="config/mapper/dexconfig.xml"/>
 	</mappers>
 </configuration>
