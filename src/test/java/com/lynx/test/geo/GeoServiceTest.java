@@ -6,9 +6,18 @@ import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
 import com.lynx.geo.service.dao.LocationDao;
 import com.lynx.test.BasicTest;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.html.HtmlParser;
+import org.apache.tika.sax.BodyContentHandler;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.SAXException;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,5 +97,25 @@ public class GeoServiceTest extends BasicTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void newsparseTest() throws IOException, SAXException,
+            TikaException {
+        String PATH = "d:\\Apache.html";
+
+        String OUTPATH = PATH + ".OUT";
+        Parser parser = new HtmlParser();
+        /**
+         * 处理指定编码的html.
+         */
+        InputStream iStream = new BufferedInputStream(new FileInputStream(
+                new File(PATH)));
+        OutputStream oStream = new BufferedOutputStream(new FileOutputStream(
+                new File(OUTPATH)));
+        ContentHandler iHandler = new BodyContentHandler(oStream);
+        Metadata meta = new Metadata();
+        meta.add(Metadata.CONTENT_ENCODING, "utf-8");
+        parser.parse(iStream, iHandler, meta, new ParseContext());
     }
 }
