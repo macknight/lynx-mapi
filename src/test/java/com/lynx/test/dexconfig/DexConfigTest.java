@@ -19,9 +19,6 @@ import java.util.List;
  */
 public class DexConfigTest extends BasicTest {
 
-	@Autowired
-	private DexConfigDao pluginStoreDao;
-
     @Autowired
     private DexConfigDao dexConfigDao;
 
@@ -34,7 +31,7 @@ public class DexConfigTest extends BasicTest {
 
 	@Test
 	public void getPluginStoreTest() {
-		List<Plugin> plugins = pluginStoreDao.getAllPlugins();
+		List<Plugin> plugins = dexConfigDao.getAllPlugins();
 		System.out.println(EncryptUtil.format(plugins));
 	}
 
@@ -44,7 +41,7 @@ public class DexConfigTest extends BasicTest {
         myPlugins.add("local");
         myPlugins.add("female");
         myPlugins.add("male");
-        List<Plugin> plugins = pluginStoreDao.getMyPlugins(myPlugins);
+        List<Plugin> plugins = dexConfigDao.getMyPlugins(myPlugins);
         System.out.println(EncryptUtil.format(plugins));
     }
 }

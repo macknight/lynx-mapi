@@ -9,6 +9,7 @@
         <result property="md5" column="MD5"/>
         <result property="desc" column="Desc"/>
         <result property="clazz" column="Clazz"/>
+        <result property="test" column="Test"/>
     </resultMap>
 
     <resultMap id="pluginResult" type="com.lynx.dexconfig.entity.Plugin">

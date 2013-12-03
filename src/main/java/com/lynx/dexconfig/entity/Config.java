@@ -21,6 +21,8 @@ public class Config {
     @Expose
     private String clazz;
 
+    private String test;
+
     public Config() {
 
     }
@@ -80,5 +82,13 @@ public class Config {
 
     public void setClazz(String clazz) {
         this.clazz = clazz;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
     }
 }

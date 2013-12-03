@@ -19,8 +19,6 @@
         <property name="defaultAutoCommit" value="true"/>
     </bean>
 
-
-
 	<bean id="cbDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 	      destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -33,7 +31,5 @@
 		<property name="maxWait" value="500"/>
 		<property name="defaultAutoCommit" value="true"/>
 	</bean>
-
-
 
 </beans>
