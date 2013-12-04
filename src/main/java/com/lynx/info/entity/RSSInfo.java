@@ -1,4 +1,4 @@
-package com.lynx.news.entity;
+package com.lynx.info.entity;
 
 import com.google.gson.annotations.Expose;
 
@@ -8,17 +8,20 @@ import com.google.gson.annotations.Expose;
  * Date: 13-12-2
  * Time: 上午11:51
  */
-public class News {
+public class RSSInfo {
     @Expose
     private String title; // 标题
     @Expose
     private String summary; // 摘要
     @Expose
-    private String imgUrl;
+    private String link; // 链接
+    @Expose
+    private long pubDate; // 发布时间
 
-    public News(String title, String summary, String imgUrl) {
+    public RSSInfo(String title, String summary, String link, long pubDate) {
         this.title = title;
         this.summary = summary;
-        this.imgUrl = imgUrl;
+        this.link = link;
+        this.pubDate = pubDate;
     }
 }

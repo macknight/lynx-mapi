@@ -1,4 +1,4 @@
-package com.lynx.news.util;
+package com.lynx.info.util;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;

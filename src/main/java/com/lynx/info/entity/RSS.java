@@ -1,4 +1,4 @@
-package com.lynx.news.entity;
+package com.lynx.info.entity;
 
 import com.google.gson.annotations.Expose;
 

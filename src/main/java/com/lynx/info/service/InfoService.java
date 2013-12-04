@@ -1,6 +1,6 @@
-package com.lynx.news.service;
+package com.lynx.info.service;
 
-import com.lynx.news.entity.News;
+import com.lynx.info.entity.Info;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import java.util.List;
  * Date: 13-12-2
  * Time: 上午11:51
  */
-public interface NewsService {
+public interface InfoService {
 
-    List<News> getSinaNews();
+    List<Info> getSinaNews();
 
 }

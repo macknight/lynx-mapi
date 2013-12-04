@@ -1,4 +1,4 @@
-package com.lynx.news;
+package com.lynx.info;
 
 /**
  * Created with IntelliJ IDEA.
