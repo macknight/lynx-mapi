@@ -1,6 +1,7 @@
 package com.lynx.info.util;
 
-import com.lynx.info.entity.Info;
+import com.lynx.info.entity.RSS;
+import com.lynx.info.entity.RSSInfo;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -19,7 +20,7 @@ import java.util.*;
  * Date: 13-12-2
  * Time: 上午11:57
  */
-public class SinaNewsUtil {
+public class SinaRSSUtil {
 
     private static HttpClient httpClient = new DefaultHttpClient();
     private static final String SINA_RSS_URL = "http://rss.sina.com.cn/sina_all_opml.xml";
@@ -33,32 +34,39 @@ public class SinaNewsUtil {
     /**
      * 获取新浪所有RSS
      */
-    public static void sinaRSS() {
+    public static List<RSS> sinaRSS() {
         try {
             String xml = getSinaRSS();
             Document doc = DocumentHelper.parseText(xml);
             Element eleRoot = doc.getRootElement();
             Element eleBody = eleRoot.element("body");
             List nodes = eleBody.elements("outline");
+            List<RSS> rsses = new ArrayList<RSS>();
             for (Iterator it = nodes.iterator(); it.hasNext(); ) {
-                Element eleOutline = (Element) it.next();
-                String title = eleOutline.attributeValue("title");
-                String[] tmp = title.split("\\-");
-                System.out.println(tmp[0]);
+                try {
+                    Element eleOutline = (Element) it.next();
+                    String title = eleOutline.attributeValue("title");
+                    String[] tmp = title.split("\\-");
+                    String categry = tmp[0];
+                    List subNodes = eleOutline.elements("outline");
 
-                List subNodes = eleOutline.elements("outline");
-                for (Iterator subIt = subNodes.iterator(); subIt.hasNext(); ) {
-                    Element eleSubOutline = (Element) subIt.next();
-                    String subTitle = eleSubOutline.attributeValue("title");
-                    String xmlUrl = eleSubOutline.attributeValue("xmlUrl");
-                    System.out.println(subTitle + "--" + xmlUrl);
+                    for (Iterator subIt = subNodes.iterator(); subIt.hasNext(); ) {
+                        Element eleSubOutline = (Element) subIt.next();
+                        String subTitle = eleSubOutline.attributeValue("title");
+                        String xmlUrl = eleSubOutline.attributeValue("xmlUrl");
+                        rsses.add(new RSS(xmlUrl, categry, subTitle));
+                    }
+                } catch (Exception e) {
+
                 }
             }
+            return rsses;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
 
         }
+        return null;
     }
 
     private static String getSinaRSS() throws Exception {
@@ -81,15 +89,16 @@ public class SinaNewsUtil {
         }
     }
 
-    public static List<Info> sinaRssNews(String data) {
+    public static List<RSSInfo> sinaRssNews(int rssId, String rss) {
         try {
-            String xml = getSinaRSSNews(data);
+            String xml = getSinaRSSNews(rss);
             Document doc = DocumentHelper.parseText(xml);
             Element eleRoot = doc.getRootElement();
             Element eleBody = eleRoot.element("channel");
 
             List nodes = eleBody.elements("item");
-            List<Info> newsList = new ArrayList<Info>();
+            List<RSSInfo> infos = new ArrayList<RSSInfo>();
+            int i = 1;
             for (Iterator it = nodes.iterator(); it.hasNext(); ) {
                 Element eleItem = (Element) it.next();
                 String strTitle = eleItem.element("title").getTextTrim();
@@ -103,10 +112,11 @@ public class SinaNewsUtil {
                 } catch (Exception e) {
 
                 }
-                Info news = new Info(strTitle, strDesc, tmp[1], pubDate);
-                newsList.add(news);
+                RSSInfo info = new RSSInfo(i++, strTitle, strDesc,
+                        tmp[1], rssId, pubDate);
+                infos.add(info);
             }
-            return newsList;
+            return infos;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -122,6 +132,7 @@ public class SinaNewsUtil {
             httpGet.setHeader("Content-Type", "text/xml; charset=utf-8");
             HttpResponse resp = httpClient.execute(httpGet);
             String respXML = EntityUtils.toString(resp.getEntity(), "utf-8");
+            System.out.println(respXML);
             return respXML;
         } catch (Exception e) {
             throw e;
@@ -134,5 +145,4 @@ public class SinaNewsUtil {
             }
         }
     }
-
 }

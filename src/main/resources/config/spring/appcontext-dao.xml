@@ -29,4 +29,9 @@
 		<property name="mapperInterface" value="com.lynx.dexconfig.service.dao.DexConfigDao"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+
+    <bean id="infoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.lynx.info.service.dao.InfoDao"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
 </beans>
