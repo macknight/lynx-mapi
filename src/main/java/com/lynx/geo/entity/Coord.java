@@ -1,15 +1,15 @@
 package com.lynx.geo.entity;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris
- * Date: 13-8-8 下午3:27
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-8-8 下午3:27
  */
 public class Coord {
 	private GeoPoint geoPoint;
 	private CoordType type;
 	private CoordSource source;
-
 
 	public Coord(GeoPoint geoPoint, CoordType type, CoordSource source) {
 		this.geoPoint = geoPoint;
@@ -43,9 +43,9 @@ public class Coord {
 
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s", geoPoint.toString(), type.name(), source.name());
+		return String.format("%s,%s,%s", geoPoint.toString(), type.name(),
+				source.name());
 	}
-
 
 	public enum CoordType {
 		GPS, // gps坐标系

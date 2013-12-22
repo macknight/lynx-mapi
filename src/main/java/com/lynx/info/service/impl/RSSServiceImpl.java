@@ -12,50 +12,45 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris.liu
- * Date: 13-12-3
- * Time: 下午8:40
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-12-3 下午8:40
  */
 @Service("infoService")
 public class RSSServiceImpl implements RSSService {
 
+	@Autowired
+	private InfoDao infoDao;
 
-    @Autowired
-    private InfoDao infoDao;
+	@PostConstruct
+	private void init() {
+		// Timer timer = new Timer("if consumer listener alive", true);
+		// timer.schedule(new TimerTask() {
+		// @Override
+		// public void run() {
+		// updateSinaRSS();
+		// }
+		// }, 0, 60 * 60 * 1000);
+	}
 
+	@Override
+	public List<RSS> getSinaRSS() {
+		return infoDao.getSinaRSSes();
+	}
 
-    @PostConstruct
-    private void init() {
-//        Timer timer = new Timer("if consumer listener alive", true);
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                updateSinaRSS();
-//            }
-//        }, 0, 60 * 60 * 1000);
-    }
+	@Override
+	public List<RSSInfo> getSinaRSSInfo(String rss, int num, long updateTime) {
 
+		return null;
+	}
 
-    @Override
-    public List<RSS> getSinaRSS() {
-        return infoDao.getSinaRSSes();
-    }
-
-    @Override
-    public List<RSSInfo> getSinaRSSInfo(String rss, int num, long updateTime) {
-
-
-        return null;
-    }
-
-    public void updateSinaRSSInfo(int rssId) {
-        String url = infoDao.getSinaRSS(rssId);
-        System.out.println(url);
-        List<RSSInfo> rssInfos = SinaRSSUtil.sinaRssNews(rssId, url);
-        if (rssInfos != null && rssInfos.size() > 0) {
-            infoDao.deleteRSSInfoByRSSId(rssId);
-            infoDao.insertRSSInfos(rssInfos);
-        }
-    }
+	public void updateSinaRSSInfo(int rssId) {
+		String url = infoDao.getSinaRSS(rssId);
+		List<RSSInfo> rssInfos = SinaRSSUtil.sinaRssNews(rssId, url);
+		if (rssInfos != null && rssInfos.size() > 0) {
+			infoDao.deleteRSSInfoByRSSId(rssId);
+			infoDao.insertRSSInfos(rssInfos);
+		}
+	}
 }

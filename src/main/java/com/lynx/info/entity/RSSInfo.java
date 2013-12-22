@@ -3,82 +3,82 @@ package com.lynx.info.entity;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris.liu
- * Date: 13-12-2
- * Time: 上午11:51
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-12-2 上午11:51
  */
 public class RSSInfo {
-    private int id;
-    @Expose
-    private String title; // 标题
-    @Expose
-    private String summary; // 摘要
-    @Expose
-    private String link; // 链接
-    private int rssId;
-    @Expose
-    private long pubDate; // 发布时间
+	private int id;
+	@Expose
+	private String title; // 标题
+	@Expose
+	private String summary; // 摘要
+	@Expose
+	private String link; // 链接
+	private int rssId;
+	@Expose
+	private long pubDate; // 发布时间
 
-    public RSSInfo() {
+	public RSSInfo() {
 
-    }
+	}
 
-    public RSSInfo(int id, String title, String summary, String link,
-                   int rssId, long pubDate) {
-        this.id = id;
-        this.title = title;
-        this.summary = summary;
-        this.link = link;
-        this.rssId = rssId;
-        this.pubDate = pubDate;
-    }
+	public RSSInfo(int id, String title, String summary, String link,
+			int rssId, long pubDate) {
+		this.id = id;
+		this.title = title;
+		this.summary = summary;
+		this.link = link;
+		this.rssId = rssId;
+		this.pubDate = pubDate;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getSummary() {
-        return summary;
-    }
+	public String getSummary() {
+		return summary;
+	}
 
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 
-    public String getLink() {
-        return link;
-    }
+	public String getLink() {
+		return link;
+	}
 
-    public void setLink(String link) {
-        this.link = link;
-    }
+	public void setLink(String link) {
+		this.link = link;
+	}
 
-    public int getRssId() {
-        return rssId;
-    }
+	public int getRssId() {
+		return rssId;
+	}
 
-    public void setRssId(int rssId) {
-        this.rssId = rssId;
-    }
+	public void setRssId(int rssId) {
+		this.rssId = rssId;
+	}
 
-    public long getPubDate() {
-        return pubDate;
-    }
+	public long getPubDate() {
+		return pubDate;
+	}
 
-    public void setPubDate(long pubDate) {
-        this.pubDate = pubDate;
-    }
+	public void setPubDate(long pubDate) {
+		this.pubDate = pubDate;
+	}
 }

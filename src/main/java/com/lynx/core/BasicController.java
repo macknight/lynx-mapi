@@ -1,11 +1,12 @@
 package com.lynx.core;
 
-
 import org.apache.log4j.Logger;
 
 /**
- * Created by chris.liu
- * Created at 13-10-26-下午11:06.
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-10-26 下午11:06.
  */
 public class BasicController {
 

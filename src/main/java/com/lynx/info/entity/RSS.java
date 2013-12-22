@@ -3,70 +3,70 @@ package com.lynx.info.entity;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris.liu
- * Date: 13-12-2
- * Time: 下午1:36
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-12-2 下午1:36
  */
 public class RSS {
-    @Expose
-    private int id;
-    private String url;
-    @Expose
-    private String category;
-    @Expose
-    private String title;
+	@Expose
+	private int id;
+	private String url;
+	@Expose
+	private String category;
+	@Expose
+	private String title;
 
-    private long updateTime;
+	private long updateTime;
 
-    public RSS() {
+	public RSS() {
 
-    }
+	}
 
-    public RSS(String url, String category, String title) {
-        this.url = url;
-        this.category = category;
-        this.title = title;
-    }
+	public RSS(String url, String category, String title) {
+		this.url = url;
+		this.category = category;
+		this.title = title;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getCategory() {
-        return category;
-    }
+	public String getCategory() {
+		return category;
+	}
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public long getUpdateTime() {
-        return updateTime;
-    }
+	public long getUpdateTime() {
+		return updateTime;
+	}
 
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setUpdateTime(long updateTime) {
+		this.updateTime = updateTime;
+	}
 
 }

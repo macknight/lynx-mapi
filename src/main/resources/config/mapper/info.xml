@@ -38,9 +38,9 @@
     <insert id="insertRSSInfos">
         INSERT INTO LM_RSSInfo(Id, Link, Title, Summary, RSSId, PubDate)
         VALUES
-        <foreach collection="rssInfos" item="info" index="index" open="(" separator="," close=")">
-            #{info.id}, #{info.link}, #{info.title},
-            #{info.summary}, #{info.rssId}, #{info.pubDate}
+        <foreach collection="rssInfos" item="info" index="index" separator=",">
+            (#{info.id}, #{info.link}, #{info.title},
+            #{info.summary}, #{info.rssId}, #{info.pubDate})
         </foreach>
     </insert>
 

@@ -6,16 +6,18 @@ import com.lynx.geo.entity.Location;
 import java.util.StringTokenizer;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris
- * Date: 13-8-8 下午4:07
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-8-8 下午4:07
  */
 public class GeoUtil {
 	public static final double EARTH_RADIUS = 6371000;
 
-    public static double distanceTo(Location loc1, Location loc2) {
-        return distanceTo(loc1.getLat(), loc1.getLng(), loc2.getLat(), loc2.getLng());
-    }
+	public static double distanceTo(Location loc1, Location loc2) {
+		return distanceTo(loc1.getLat(), loc1.getLng(), loc2.getLat(),
+				loc2.getLng());
+	}
 
 	public static double distanceTo(GeoPoint g1, GeoPoint g2) {
 		return distanceTo(g1.getLat(), g1.getLng(), g2.getLat(), g2.getLng());
@@ -43,7 +45,6 @@ public class GeoUtil {
 		return lat * Math.PI / 180;
 	} // latToRadians
 
-
 	public static long mac2long(String mac) {
 		StringTokenizer st = new StringTokenizer(mac, ":");
 		if (st.countTokens() != 6) {
@@ -52,8 +53,7 @@ public class GeoUtil {
 		try {
 			long macLong = Long.parseLong(st.nextToken(), 16);
 			while (st.hasMoreTokens()) {
-				macLong = macLong * 256
-						+ Long.parseLong(st.nextToken(), 16);
+				macLong = macLong * 256 + Long.parseLong(st.nextToken(), 16);
 			}
 			return macLong;
 		} catch (NumberFormatException e) {

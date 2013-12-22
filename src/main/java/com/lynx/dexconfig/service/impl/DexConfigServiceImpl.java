@@ -10,8 +10,10 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
- * Created by chris.liu
- * Created at 13-10-27-下午12:11.
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-10-27-下午12:11
  */
 @Service("configService")
 public class DexConfigServiceImpl implements DexConfigService {
@@ -19,26 +21,24 @@ public class DexConfigServiceImpl implements DexConfigService {
 	@Autowired
 	private DexConfigDao dexConfigDao;
 
-
 	@PostConstruct
 	private void init() {
-		
+
 	}
 
 	/**
 	 * android动态更新配置
-	 *
+	 * 
 	 * @return
 	 */
 	@Override
 	public List<Config> getDexServiceConfig(String ua, String token) {
 		try {
-            return dexConfigDao.getDexServiceConfig();
+			return dexConfigDao.getDexServiceConfig();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 
 }

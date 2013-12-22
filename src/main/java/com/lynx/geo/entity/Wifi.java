@@ -3,9 +3,10 @@ package com.lynx.geo.entity;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris
- * Date: 13-8-8 下午6:05
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-8-8 下午6:05
  */
 public class Wifi {
 	@Expose

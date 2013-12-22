@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * Created by chris.liu
- * Created at 13-10-26-下午2:17.
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-10-26 下午2:17.
  */
 public class EncryptUtil {
 

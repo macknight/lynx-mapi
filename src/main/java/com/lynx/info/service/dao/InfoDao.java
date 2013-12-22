@@ -7,41 +7,41 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris.liu
- * Date: 13-12-3
- * Time: 下午8:40
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-12-3 下午8:40
  */
 public interface InfoDao {
 
-    List<RSS> getSinaRSSes();
+	List<RSS> getSinaRSSes();
 
-    String getSinaRSS(@Param(value = "id") int id);
+	String getSinaRSS(@Param(value = "id") int id);
 
-    /**
-     * 获取某个rss的资讯
-     *
-     * @param rssId
-     * @param page
-     * @return
-     */
-    List<RSSInfo> getSinaRSSInfo(@Param(value = "rssId") int rssId,
-                                 @Param(value = "page") int page);
+	/**
+	 * 获取某个rss的资讯
+	 * 
+	 * @param rssId
+	 * @param page
+	 * @return
+	 */
+	List<RSSInfo> getSinaRSSInfo(@Param(value = "rssId") int rssId,
+			@Param(value = "page") int page);
 
-    /**
-     * 删除某个rss的资讯
-     *
-     * @param rssId
-     * @return
-     */
-    int deleteRSSInfoByRSSId(@Param(value = "rssId") int rssId);
+	/**
+	 * 删除某个rss的资讯
+	 * 
+	 * @param rssId
+	 * @return
+	 */
+	int deleteRSSInfoByRSSId(@Param(value = "rssId") int rssId);
 
-    /**
-     * 插入某个rss下的资讯
-     *
-     * @param rssInfos
-     * @return
-     */
-    int insertRSSInfos(@Param(value = "rssInfos") List<RSSInfo> rssInfos);
+	/**
+	 * 插入某个rss下的资讯
+	 * 
+	 * @param rssInfos
+	 * @return
+	 */
+	int insertRSSInfos(@Param(value = "rssInfos") List<RSSInfo> rssInfos);
 
 }

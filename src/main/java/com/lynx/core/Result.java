@@ -3,8 +3,10 @@ package com.lynx.core;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created by chris.liu
- * Created at 13-10-26-下午2:17.
+ * 
+ * @author zhufeng.liu
+ * 
+ * @addtime 13-10-26-下午2:17
  */
 public class Result {
 	public static final int RS_OK = 200;
