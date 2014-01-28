@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-2 下午1:36
+ * @version 13-12-2 下午1:36
  */
 public class RSS {
 	@Expose

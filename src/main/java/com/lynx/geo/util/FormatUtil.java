@@ -14,7 +14,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-9 上午9:37
+ * @version 13-8-9 上午9:37
  */
 public class FormatUtil {
 

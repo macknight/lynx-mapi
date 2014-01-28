@@ -18,7 +18,7 @@ import java.util.*;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-2 上午11:57
+ * @version 13-12-2 上午11:57
  */
 public class SinaRSSUtil {
 

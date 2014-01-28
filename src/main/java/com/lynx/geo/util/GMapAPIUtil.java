@@ -19,7 +19,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-14 下午2:03
+ * @version 13-8-14 下午2:03
  */
 public class GMapAPIUtil {
 

@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-19 上午10:20
+ * @version 13-8-19 上午10:20
  */
 @Service("lbsBizService")
 public class LBSBizServiceImpl extends BasicService implements LBSBizService {

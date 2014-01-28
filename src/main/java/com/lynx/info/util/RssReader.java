@@ -14,7 +14,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-2 下午5:32
+ * @version 13-12-2 下午5:32
  */
 public class RssReader {
 

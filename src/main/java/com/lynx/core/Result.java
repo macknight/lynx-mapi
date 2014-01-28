@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-10-26-下午2:17
+ * @version 13-10-26-下午2:17
  */
 public class Result {
 	public static final int RS_OK = 200;

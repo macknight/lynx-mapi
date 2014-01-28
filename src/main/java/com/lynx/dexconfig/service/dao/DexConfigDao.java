@@ -10,7 +10,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-11-13 下午5:46
+ * @version 13-11-13 下午5:46
  */
 public interface DexConfigDao {
 

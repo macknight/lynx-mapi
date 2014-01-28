@@ -4,7 +4,7 @@ package com.lynx.geo.entity;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午3:27
+ * @version 13-8-8 下午3:27
  */
 public class Coord {
 	private GeoPoint geoPoint;

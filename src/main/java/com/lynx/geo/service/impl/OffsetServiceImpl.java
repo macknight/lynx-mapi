@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午5:23
+ * @version 13-8-8 下午5:23
  */
 @Service("offsetService")
 public class OffsetServiceImpl extends BasicService implements OffsetService {

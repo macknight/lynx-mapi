@@ -1,22 +1,24 @@
 package com.lynx.test.info;
 
+import java.util.Date;
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.info.entity.RSS;
 import com.lynx.info.entity.RSSInfo;
 import com.lynx.info.service.RSSService;
 import com.lynx.info.util.SinaRSSUtil;
 import com.lynx.test.BasicTest;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * 
- * @author zhufeng.liu
+ * @author chris.liu
  * 
- * @addtime 13-12-3 下午3:09
+ * @version 13-12-3 下午3:09
+ * 
  */
 public class RSSTest extends BasicTest {
 

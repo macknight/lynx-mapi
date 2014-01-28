@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-2 上午11:51
+ * @version 13-12-2 上午11:51
  */
 public interface RSSService {
 

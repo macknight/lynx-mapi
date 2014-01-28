@@ -19,7 +19,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-2 上午11:50
+ * @version 13-12-2 上午11:50
  */
 @Controller
 @RequestMapping(value = "/rss", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")

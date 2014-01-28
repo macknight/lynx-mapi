@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-10-26-上午11:14
+ * @version 13-10-26-上午11:14
  */
 public interface LocationDao {
 

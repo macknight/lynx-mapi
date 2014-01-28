@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-10-27-下午12:10
+ * @version 13-10-27-下午12:10
  */
 public interface DexConfigService {
 

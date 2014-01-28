@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午6:22
+ * @version 13-8-8 下午6:22
  */
 public class CDMACell implements Cell {
 	@Expose

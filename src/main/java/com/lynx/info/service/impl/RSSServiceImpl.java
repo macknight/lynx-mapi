@@ -15,7 +15,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-12-3 下午8:40
+ * @version 13-12-3 下午8:40
  */
 @Service("infoService")
 public class RSSServiceImpl implements RSSService {

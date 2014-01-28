@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午4:07
+ * @version 13-8-8 下午4:07
  */
 public class GeoUtil {
 	public static final double EARTH_RADIUS = 6371000;

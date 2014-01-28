@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午3:40
+ * @version 13-8-8 下午3:40
  */
 public interface RGCDao {
 

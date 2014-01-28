@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-11-13 下午5:35
+ * @version 13-11-13 下午5:35
  */
 public class Plugin extends Config {
 	@Expose

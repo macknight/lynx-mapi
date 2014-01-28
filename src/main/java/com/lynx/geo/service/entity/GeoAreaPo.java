@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-9 下午1:28
+ * @version 13-8-9 下午1:28
  */
 public class GeoAreaPo {
 	public static final int GA_LEVEL_COUNTRY = 0;

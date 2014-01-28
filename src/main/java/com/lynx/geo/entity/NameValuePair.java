@@ -4,7 +4,7 @@ package com.lynx.geo.entity;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-14 下午3:45
+ * @version 13-8-14 下午3:45
  */
 public class NameValuePair<T> {
 	private String name;
