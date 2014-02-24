@@ -1,31 +1,17 @@
 package com.lynx.test.geo;
 
-import org.apache.tika.exception.TikaException;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.html.HtmlParser;
-import org.apache.tika.sax.BodyContentHandler;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.SAXException;
 
 import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
-import com.lynx.geo.entity.Address;
-import com.lynx.geo.entity.CDMACell;
-import com.lynx.geo.entity.Cell;
-import com.lynx.geo.entity.GSMCell;
-import com.lynx.geo.entity.GeoPoint;
-import com.lynx.geo.entity.Location;
+import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
 import com.lynx.geo.service.dao.LocationDao;
 import com.lynx.test.BasicTest;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 
@@ -103,22 +89,5 @@ public class GeoServiceTest extends BasicTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Test
-	public void newsparseTest() throws IOException, SAXException, TikaException {
-		String PATH = "e:\\test.htm";
-
-		String OUTPATH = PATH + ".out";
-		Parser parser = new HtmlParser();
-		/**
-		 * 处理指定编码的html.
-		 */
-		InputStream iStream = new BufferedInputStream(new FileInputStream(new File(PATH)));
-		OutputStream oStream = new BufferedOutputStream(new FileOutputStream(new File(OUTPATH)));
-		ContentHandler iHandler = new BodyContentHandler(oStream);
-		Metadata meta = new Metadata();
-		meta.add(Metadata.CONTENT_ENCODING, "utf-8");
-		parser.parse(iStream, iHandler, meta, new ParseContext());
 	}
 }
