@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA. User: chris Date: 13-12-23 下午12:09
+ * 
+ * @author chris.liu
+ * 
+ * @version 13-12-23 下午12:09
  */
 public class BaseAction extends ActionSupport implements ServletRequestAware, ServletResponseAware,
 		SessionAware {

@@ -13,7 +13,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-10-27-下午12:11
+ * @version 13-10-27-下午12:11
  */
 @Service("configService")
 public class DexConfigServiceImpl implements DexConfigService {

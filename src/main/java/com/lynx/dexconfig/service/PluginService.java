@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-11-13 下午5:34
+ * @version 13-11-13 下午5:34
  */
 public interface PluginService {
 

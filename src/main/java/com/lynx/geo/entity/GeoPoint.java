@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午3:27
+ * @version 13-8-8 下午3:27
  */
 public class GeoPoint {
 	@Expose

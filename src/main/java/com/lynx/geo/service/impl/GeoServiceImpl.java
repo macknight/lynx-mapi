@@ -25,7 +25,7 @@ import java.util.concurrent.Executors;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午3:38
+ * @version 13-8-8 下午3:38
  */
 @Service("geoService")
 public class GeoServiceImpl extends BasicService implements GeoService {

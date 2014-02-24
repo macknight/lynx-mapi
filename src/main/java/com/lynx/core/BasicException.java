@@ -4,7 +4,7 @@ package com.lynx.core;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-19 上午10:23
+ * @version 13-8-19 上午10:23
  */
 public class BasicException extends Exception {
 	protected int errCode; // 错误码

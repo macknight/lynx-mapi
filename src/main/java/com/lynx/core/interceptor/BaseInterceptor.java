@@ -4,9 +4,10 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
 /**
- * Created with IntelliJ IDEA.
- * User: chris
- * Date: 13-12-23 上午10:01
+ * 
+ * @author chris.liu
+ * 
+ * @version 13-12-23 上午10:01
  */
 public class BaseInterceptor extends AbstractInterceptor {
 

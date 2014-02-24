@@ -24,7 +24,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午3:16
+ * @version 13-8-8 下午3:16
  */
 @Controller
 @RequestMapping(value = "/geo", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")

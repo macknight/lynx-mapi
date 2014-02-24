@@ -6,8 +6,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author: chris.liu
- * @addtime: 13-12-23 下午1:23
+ * 
+ * @author chris.liu
+ * 
+ * @version 13-12-23 下午1:23
  */
 public class GeoBizAction extends BaseAction {
 

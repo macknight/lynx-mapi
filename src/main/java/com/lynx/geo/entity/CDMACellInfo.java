@@ -1,9 +1,10 @@
 package com.lynx.geo.entity;
 
 /**
- * @author: chris.liu
  * 
- * @addtime: 13-12-23 下午3:20
+ * @author chris.liu
+ * 
+ * @version 13-12-23 下午3:20
  */
 public class CDMACellInfo {
 	private int mcc; // Mobile Country Code

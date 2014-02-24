@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-9 下午1:28
+ * @version 13-8-9 下午1:28
  */
 public class GeoAreaPo {
 	public static final int GA_LEVEL_COUNTRY = 0;
@@ -21,10 +21,6 @@ public class GeoAreaPo {
 	@Expose
 	private int parentId;
 	private int level;
-
-	public GeoAreaPo() {
-
-	}
 
 	public GeoAreaPo(int id, String name, int parentId, int level) {
 		this.id = id;

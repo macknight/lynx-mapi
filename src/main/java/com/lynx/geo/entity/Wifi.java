@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午6:05
+ * @version 13-8-8 下午6:05
  */
 public class Wifi {
 	@Expose

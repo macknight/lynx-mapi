@@ -1,4 +1,4 @@
-package com.lynx.geo.dao;
+package com.lynx.geo.service.dao;
 
 import com.lynx.geo.entity.GeoPoint;
 import org.apache.ibatis.annotations.Param;

@@ -4,7 +4,7 @@ package com.lynx.geo.entity;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-22 上午10:12
+ * @version 13-8-22 上午10:12
  */
 public class User {
 	private int id;

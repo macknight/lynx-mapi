@@ -4,7 +4,7 @@ package com.lynx.geo.dao.entity;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-11-2-下午4:09
+ * @version 13-11-2-下午4:09
  */
 public class LocationPo {
 	private double lat;

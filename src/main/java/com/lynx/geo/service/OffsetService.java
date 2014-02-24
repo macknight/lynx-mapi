@@ -7,7 +7,7 @@ import com.lynx.geo.entity.GeoPoint;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-8 下午5:14
+ * @version 13-8-8 下午5:14
  */
 public interface OffsetService {
 

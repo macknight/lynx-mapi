@@ -1,11 +1,10 @@
-package com.lynx.geo.dao;
-
-import com.lynx.geo.entity.CDMACellInfo;
-import com.lynx.geo.entity.GSMCellInfo;
-import com.lynx.geo.dao.entity.LocationPo;
-import org.apache.ibatis.annotations.Param;
+package com.lynx.geo.service.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.lynx.geo.dao.entity.LocationPo;
 
 /**
  * 
@@ -30,10 +29,4 @@ public interface LocationDao {
 	void updateGSMAddress(@Param(value = "mcc") int mcc, @Param(value = "mnc") int mnc,
 			@Param(value = "lac") int lac, @Param(value = "cid") int cid,
 			@Param(value = "addr") String addr);
-
-	List<CDMACellInfo> getCDMACellInfo(@Param(value = "offset") int offset,
-			@Param(value = "limit") int limit);
-
-	List<GSMCellInfo> getGSMCellInfo(@Param(value = "offset") int offset,
-			@Param(value = "limit") int limit);
 }

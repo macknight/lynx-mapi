@@ -21,7 +21,7 @@ import java.util.List;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-13 下午5:25
+ * @version 13-8-13 下午5:25
  */
 public class BMapAPIUtil {
 

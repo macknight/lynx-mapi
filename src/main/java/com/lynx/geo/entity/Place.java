@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-8-12 上午10:20
+ * @version 13-8-12 上午10:20
  */
 public class Place {
 	@Expose

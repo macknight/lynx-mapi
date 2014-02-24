@@ -23,7 +23,7 @@ import com.lynx.dexconfig.service.PluginService;
  * 
  * @author zhufeng.liu
  * 
- * @addtime 13-10-27-下午12:09
+ * @version 13-10-27-下午12:09
  */
 @Controller
 @RequestMapping(value = "/dex", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")

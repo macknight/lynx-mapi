@@ -5,8 +5,10 @@ import com.lynx.geo.service.GeoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author: chris.liu
- * @addtime: 13-12-23 下午2:59
+ * 
+ * @author chris.liu
+ * 
+ * @version 13-12-23 下午2:59
  */
 public class CellInfoAction extends BaseAction {
 
