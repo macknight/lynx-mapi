@@ -93,8 +93,7 @@ public class FormatUtil {
 	}
 
 	/**
-	 * convert str with format province|city|region|street|streeNo to Address
-	 * object
+	 * convert str with format province|city|region|street|streeNo to Address object
 	 * 
 	 * @param str
 	 * @return
@@ -110,20 +109,17 @@ public class FormatUtil {
 	}
 
 	/**
-	 * convert address object to str with format
-	 * province|city|region|street|streeNo
+	 * convert address object to str with format province|city|region|street|streeNo
 	 * 
 	 * @param addr
 	 * @return
 	 */
 	public static String address2str(Address addr) {
-		return String.format("%s|%s|%s|%s|%s", addr.getProvince(),
-				addr.getCity(), addr.getRegion(), addr.getStreet(),
-				addr.getNum());
+		return String.format("%s|%s|%s|%s|%s", addr.getProvince(), addr.getCity(),
+				addr.getRegion(), addr.getStreet(), addr.getNum());
 	}
 
-	public static String stream2string(InputStream instream, String encoding)
-			throws IOException {
+	public static String stream2string(InputStream instream, String encoding) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		int i = -1;
 		while ((i = instream.read()) != -1) {
@@ -175,8 +171,7 @@ public class FormatUtil {
 							value = (value << 4) + 10 + ch - 'A';
 							break;
 						default:
-							throw new IllegalArgumentException(
-									"Malformed      encoding.");
+							throw new IllegalArgumentException("Malformed      encoding.");
 						}
 					}
 					outBuffer.append((char) value);

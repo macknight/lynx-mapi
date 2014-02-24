@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lynx</groupId>
-    <artifactId>lynx-web</artifactId>
+    <artifactId>lynx-mapi</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>lynx-web</name>
+    <name>lynx-mapi</name>
 
     <properties>
         <env>dev</env>
@@ -28,6 +28,16 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
+	    <dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		    <version>2.3.15.2</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-spring-plugin</artifactId>
+		    <version>2.3.15.2</version>
+	    </dependency>
 
         <!-- mybatis相关依赖 -->
         <dependency>

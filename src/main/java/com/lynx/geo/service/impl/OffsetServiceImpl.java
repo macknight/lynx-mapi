@@ -2,7 +2,7 @@ package com.lynx.geo.service.impl;
 
 import com.lynx.core.BasicService;
 import com.lynx.geo.service.OffsetService;
-import com.lynx.geo.service.dao.OffsetDao;
+import com.lynx.geo.dao.OffsetDao;
 import com.lynx.geo.entity.Coord;
 import com.lynx.geo.entity.Coord.CoordType;
 import com.lynx.geo.entity.GeoPoint;
@@ -66,18 +66,14 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 				return getFixedGeoPoint(result, sct, dct);
 			case BAIDU:
 				GeoPoint tmpGp = getFixedGeoPoint(result, sct, CoordType.GOOGLE);
-				GeoPoint tmpGp2 = getFixedGeoPoint(tmpGp, CoordType.GOOGLE,
-						CoordType.GPS);
+				GeoPoint tmpGp2 = getFixedGeoPoint(tmpGp, CoordType.GOOGLE, CoordType.GPS);
 				return getFixedGeoPoint(tmpGp2, CoordType.GPS, dct);
 			case GPS:
-				GeoPoint tmpGp3 = getFixedGeoPoint(result, sct,
-						CoordType.GOOGLE);
+				GeoPoint tmpGp3 = getFixedGeoPoint(result, sct, CoordType.GOOGLE);
 				return getFixedGeoPoint(tmpGp3, CoordType.GOOGLE, dct);
 			case GAODE:
-				GeoPoint tmpGp4 = getFixedGeoPoint(result, sct,
-						CoordType.GOOGLE);
-				GeoPoint tmpGp5 = getFixedGeoPoint(tmpGp4, CoordType.GOOGLE,
-						Coord.CoordType.GPS);
+				GeoPoint tmpGp4 = getFixedGeoPoint(result, sct, CoordType.GOOGLE);
+				GeoPoint tmpGp5 = getFixedGeoPoint(tmpGp4, CoordType.GOOGLE, Coord.CoordType.GPS);
 				return getFixedGeoPoint(tmpGp5, CoordType.GPS, dct);
 			default:
 				return result;
@@ -90,8 +86,7 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 				return getFixedGeoPoint(tmpGp, CoordType.GPS, dct);
 			case MAPBAR:
 				GeoPoint tmpGp2 = getFixedGeoPoint(result, sct, CoordType.GPS);
-				GeoPoint tmpGp3 = getFixedGeoPoint(tmpGp2, CoordType.GPS,
-						CoordType.GOOGLE);
+				GeoPoint tmpGp3 = getFixedGeoPoint(tmpGp2, CoordType.GPS, CoordType.GOOGLE);
 				return getFixedGeoPoint(tmpGp3, CoordType.GOOGLE, dct);
 			case GPS:
 				return getFixedGeoPoint(result, sct, dct);
@@ -113,8 +108,7 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 				return getFixedGeoPoint(tmpGp2, CoordType.GPS, dct);
 			case MAPBAR:
 				GeoPoint tmpGp3 = getFixedGeoPoint(result, sct, CoordType.GPS);
-				GeoPoint tmpGp4 = getFixedGeoPoint(tmpGp3, CoordType.GPS,
-						CoordType.GOOGLE);
+				GeoPoint tmpGp4 = getFixedGeoPoint(tmpGp3, CoordType.GPS, CoordType.GOOGLE);
 				return getFixedGeoPoint(tmpGp4, CoordType.GOOGLE, dct);
 			default:
 				return result;
@@ -130,8 +124,7 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 	 * @param dct
 	 * @return
 	 */
-	private GeoPoint getFixedGeoPoint(GeoPoint origin, CoordType sct,
-			CoordType dct) {
+	private GeoPoint getFixedGeoPoint(GeoPoint origin, CoordType sct, CoordType dct) {
 		if (origin == null) {
 			return origin;
 		}
@@ -170,8 +163,7 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 		}
 	}
 
-	private GeoPoint getOffset(double lat, double lng, CoordType sct,
-			CoordType dct) {
+	private GeoPoint getOffset(double lat, double lng, CoordType sct, CoordType dct) {
 		GeoPoint offsetGp = null;
 		try {
 			if ((sct == CoordType.GPS && dct == CoordType.GOOGLE)

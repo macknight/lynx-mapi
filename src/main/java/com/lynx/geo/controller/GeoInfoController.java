@@ -57,8 +57,7 @@ public class GeoInfoController extends BasicController {
 			log.info(e.getStackTrace());
 			result = new Result(Result.RS_ERROR, "server inner error");
 		}
-		return new ResponseEntity<String>(EncryptUtil.format(result),
-				HttpStatus.OK);
+		return new ResponseEntity<String>(EncryptUtil.format(result), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/lbsAd")

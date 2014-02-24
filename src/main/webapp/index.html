@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>index</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="./script/css/customer.css" rel="stylesheet" type="text/css" />
+	<script src="./script/js/lib/pagesplit.js"></script>
+</head>
+<body>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0"
+	       class="offline-table" text-align="center" id="dunning-records-table">
+		<tr>
+			<th width="6%" scope="col">MCC</th>
+			<th width="8%" scope="col">MNC</th>
+			<th width="8%" scope="col">LAC</th>
+			<th width="8%" scope="col">CID</th>
+			<th width="12%" scope="col">Lat</th>
+			<th width="12%" scope="col">Lng</th>
+			<th width="20%" scope="col">Addr</th>
+		</tr>
+		<s:iterator value="shopDunningRecordVOs">
+			<tr>
+				<td><p class="clor-gray"><s:property value="shopId" /></td>
+				<td>
+					<p><s:property value="shopName" /></p>
+					<p class="clor-gray"><s:property value="city" /></p>
+				</td>
+				<td><p><s:property value="smsNum"/>/<s:property value="callNum"/></td>
+				<td><p><s:property value="id"/></p></td>
+				<td><p><s:property value="shopStatus"/></p></td>
+				<td><p><s:property value="shopStatus"/></p></td>
+				<td><p><s:property value="shopStatus"/></p></td>
+			</tr>
+		</s:iterator>
+	</table>
+	<input type="hidden" id="allRecordCount" data=<s:property value="allRecordCount"/> />
+	<input type="hidden" id="pageSize" data=<s:property value="pageSize"/> />
+	<input type="hidden" id="pageNumber" data=<s:property value="pageNumber"/> />
+	<script language="JavaScript">
+		var pg = new showPages('pg');
+		pg.pageCount =12;
+		pg.printHtml();
+	</script>
+</body>
+</html>

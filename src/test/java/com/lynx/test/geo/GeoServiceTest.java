@@ -4,7 +4,7 @@ import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
-import com.lynx.geo.service.dao.LocationDao;
+import com.lynx.geo.dao.LocationDao;
 import com.lynx.test.BasicTest;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;

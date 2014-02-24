@@ -24,8 +24,7 @@ public class Address {
 
 	}
 
-	public Address(String province, String city, String region, String street,
-			String num) {
+	public Address(String province, String city, String region, String street, String num) {
 		this.province = province;
 		this.city = city;
 		this.region = region;

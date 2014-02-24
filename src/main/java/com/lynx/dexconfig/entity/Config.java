@@ -28,8 +28,7 @@ public class Config {
 
 	}
 
-	public Config(String module, int version, String url, String md5,
-			String desc, String clazz) {
+	public Config(String module, int version, String url, String md5, String desc, String clazz) {
 		this.module = module;
 		this.version = version;
 		this.url = url;

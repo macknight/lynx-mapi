@@ -7,6 +7,5 @@
         <mapper resource="config/mapper/rgc.xml"/>
         <mapper resource="config/mapper/offset.xml"/>
         <mapper resource="config/mapper/dexconfig.xml"/>
-        <mapper resource="config/mapper/info.xml"/>
     </mappers>
 </configuration>

@@ -1,12 +1,8 @@
 package com.lynx.dexconfig.controller;
 
-import com.lynx.core.BasicController;
-import com.lynx.core.Result;
-import com.lynx.core.util.EncryptUtil;
-import com.lynx.dexconfig.entity.Config;
-import com.lynx.dexconfig.entity.Plugin;
-import com.lynx.dexconfig.service.DexConfigService;
-import com.lynx.dexconfig.service.PluginService;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.lynx.core.BasicController;
+import com.lynx.core.Result;
+import com.lynx.core.util.EncryptUtil;
+import com.lynx.dexconfig.entity.Config;
+import com.lynx.dexconfig.entity.Plugin;
+import com.lynx.dexconfig.service.DexConfigService;
+import com.lynx.dexconfig.service.PluginService;
 
 /**
  * 
@@ -47,19 +48,16 @@ public class DexConfigController extends BasicController {
 			@RequestParam(value = "token", required = false) String token) {
 		Result result = null;
 		try {
-			List<Config> config = dexConfigService.getDexServiceConfig(ua,
-					token);
+			List<Config> config = dexConfigService.getDexServiceConfig(ua, token);
 			if (config != null) {
 				result = new Result(Result.RS_OK, config);
 			} else {
-				result = new Result(Result.RS_FAIL,
-						"cant get framework dexconfig");
+				result = new Result(Result.RS_FAIL, "cant get framework dexconfig");
 			}
 		} catch (Exception e) {
 			result = new Result(Result.RS_ERROR, "server inner error");
 		}
-		return new ResponseEntity<String>(EncryptUtil.format(result),
-				HttpStatus.OK);
+		return new ResponseEntity<String>(EncryptUtil.format(result), HttpStatus.OK);
 	}
 
 	/**
@@ -67,7 +65,7 @@ public class DexConfigController extends BasicController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/myplugin", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/myplugin")
 	public ResponseEntity<String> myPlguins(
 			@RequestParam(value = "apps", required = true) String data) {
 		Result result = null;
@@ -84,16 +82,14 @@ public class DexConfigController extends BasicController {
 				if (plugins != null && plugins.size() > 0) {
 					result = new Result(Result.RS_OK, plugins);
 				} else {
-					result = new Result(Result.RS_FAIL,
-							"no dexconfig in store yet");
+					result = new Result(Result.RS_FAIL, "no dexconfig in store yet");
 				}
 			}
 		} catch (Exception e) {
 			log.info(e.getStackTrace());
 			result = new Result(Result.RS_ERROR, "server inner error");
 		}
-		return new ResponseEntity<String>(EncryptUtil.format(result),
-				HttpStatus.OK);
+		return new ResponseEntity<String>(EncryptUtil.format(result), HttpStatus.OK);
 	}
 
 	/**
@@ -101,7 +97,7 @@ public class DexConfigController extends BasicController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/pluginstore", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/pluginstore")
 	public ResponseEntity<String> pluginsAtStore() {
 		Result result = null;
 		try {
@@ -115,7 +111,6 @@ public class DexConfigController extends BasicController {
 			log.info(e.getStackTrace());
 			result = new Result(Result.RS_ERROR, "server inner error");
 		}
-		return new ResponseEntity<String>(EncryptUtil.format(result),
-				HttpStatus.OK);
+		return new ResponseEntity<String>(EncryptUtil.format(result), HttpStatus.OK);
 	}
 }

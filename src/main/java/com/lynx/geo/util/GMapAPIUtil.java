@@ -26,8 +26,7 @@ public class GMapAPIUtil {
 	private static final String GMAP_API_REGION = "http://ditu.google.cn/maps/br?brtype=2&brstart=0x31508e64e5c642c1:0x951daa7c349f366f&brv=25.1-549461b1_212dafdc_d6d3fe92_88a7ae9f_a1fc3f75&jsv=460c&ll=%s,%s&spn=0,0&z=0&vpsrc=0&hl=zh-CN&gl=cn";
 
 	public static List<String> geoarea(GeoPoint geoPoint, int level) {
-		String url = String.format(GMAP_API_REGION, geoPoint.getLat(),
-				geoPoint.getLng());
+		String url = String.format(GMAP_API_REGION, geoPoint.getLat(), geoPoint.getLng());
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(url);
 		InputStream instream = null;
@@ -72,11 +71,10 @@ public class GMapAPIUtil {
 			if (jaLevel.length() >= level + 1) {
 				List<String> areas = new ArrayList<String>();
 				JSONObject joSubLevel = jaLevel.getJSONObject(level);
-				JSONArray jaSubNode = joSubLevel
-						.getJSONArray("next_level_nodes");
+				JSONArray jaSubNode = joSubLevel.getJSONArray("next_level_nodes");
 				for (int i = 0; i < jaSubNode.length(); ++i) {
-					String area = jaSubNode.getJSONObject(i)
-							.getJSONObject("name").getString("display_text");
+					String area = jaSubNode.getJSONObject(i).getJSONObject("name")
+							.getString("display_text");
 					areas.add(area);
 				}
 				return areas;

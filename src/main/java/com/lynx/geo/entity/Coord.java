@@ -43,8 +43,7 @@ public class Coord {
 
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s", geoPoint.toString(), type.name(),
-				source.name());
+		return String.format("%s,%s,%s", geoPoint.toString(), type.name(), source.name());
 	}
 
 	public enum CoordType {

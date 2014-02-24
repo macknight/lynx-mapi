@@ -28,7 +28,10 @@ public interface GeoService {
 	 */
 	GeoPoint geocoding(Address address);
 
-	List<Location> location(List<Cell> cells, List<Wifi> wifis,
-			List<Coord> coords);
+	List<Location> location(List<Cell> cells, List<Wifi> wifis, List<Coord> coords);
+
+	List<GSMCellInfo> gsmCellInfo(int page, int pageSize);
+
+	List<CDMACellInfo> cdmaCellInfo(int page, int pageSize);
 
 }

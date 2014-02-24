@@ -3,9 +3,9 @@ package com.lynx.geo.service.impl;
 import com.lynx.core.BasicService;
 import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
-import com.lynx.geo.service.dao.LocationDao;
-import com.lynx.geo.service.dao.RGCDao;
-import com.lynx.geo.service.entity.LocationPo;
+import com.lynx.geo.dao.LocationDao;
+import com.lynx.geo.dao.RGCDao;
+import com.lynx.geo.dao.entity.LocationPo;
 import com.lynx.geo.util.BMapAPIUtil;
 import com.lynx.geo.util.FormatUtil;
 import com.lynx.geo.util.GeoUtil;
@@ -57,22 +57,19 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 	@Override
 	public GeoPoint geocoding(Address address) {
 		String addr = "";
-		addr = address.getProvince() == null ? addr : String.format("%s%s",
-				addr, address.getProvince());
-		addr = address.getCity() == null ? addr : String.format("%s%s", addr,
-				address.getCity());
-		addr = address.getRegion() == null ? addr : String.format("%s%s", addr,
-				address.getRegion());
-		addr = address.getStreet() == null ? addr : String.format("%s%s", addr,
-				address.getStreet());
-		addr = address.getNum() == null ? addr : String.format("%s%s", addr,
-				address.getNum());
+		addr = address.getProvince() == null ? addr : String.format("%s%s", addr,
+				address.getProvince());
+		addr = address.getCity() == null ? addr : String.format("%s%s", addr, address.getCity());
+		addr = address.getRegion() == null ? addr : String
+				.format("%s%s", addr, address.getRegion());
+		addr = address.getStreet() == null ? addr : String
+				.format("%s%s", addr, address.getStreet());
+		addr = address.getNum() == null ? addr : String.format("%s%s", addr, address.getNum());
 		return BMapAPIUtil.geocoding(addr);
 	}
 
 	@Override
-	public List<Location> location(List<Cell> cells, List<Wifi> wifis,
-			List<Coord> coords) {
+	public List<Location> location(List<Cell> cells, List<Wifi> wifis, List<Coord> coords) {
 		// locate2log(cells, wifis, coords);
 
 		List<Location> result = new ArrayList<Location>();
@@ -102,6 +99,16 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 		return result.size() == 0 ? null : result;
 	}
 
+	@Override
+	public List<GSMCellInfo> gsmCellInfo(int page, int pageSize) {
+		return locationDao.getGSMCellInfo(page * pageSize, pageSize);
+	}
+
+	@Override
+	public List<CDMACellInfo> cdmaCellInfo(int page, int pageSize) {
+		return locationDao.getCDMACellInfo(page * pageSize, pageSize);
+	}
+
 	private Location getCellLocation(List<Cell> cells) {
 		try {
 			Map<Cell, Location> result = new HashMap<Cell, Location>();
@@ -110,14 +117,14 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 				switch (cell.type()) {
 				case CDMA: {
 					CDMACell cdma = (CDMACell) cell;
-					locPo = locationDao.getCDMALocation(cdma.getMcc(),
-							cdma.getSid(), cdma.getNid(), cdma.getBid());
+					locPo = locationDao.getCDMALocation(cdma.getMcc(), cdma.getSid(),
+							cdma.getNid(), cdma.getBid());
 					break;
 				}
 				case GSM: {
 					GSMCell gsm = (GSMCell) cell;
-					locPo = locationDao.getGSMLocation(gsm.getMcc(),
-							gsm.getMnc(), gsm.getLac(), gsm.getCid());
+					locPo = locationDao.getGSMLocation(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
+							gsm.getCid());
 					break;
 				}
 				default:
@@ -128,13 +135,12 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 					if (addr == null) {
 						// 需要数据补充,将请求放入线程池中执行更新
 						System.out.println("need to update geo info");
-						UpdateGeoInfoTask task = new UpdateGeoInfoTask(cell,
-								locPo.getLat(), locPo.getLng());
+						UpdateGeoInfoTask task = new UpdateGeoInfoTask(cell, locPo.getLat(),
+								locPo.getLng());
 						executorService.submit(task);
 					}
-					Location location = new Location(FormatUtil.format(
-							locPo.getLat(), 4), FormatUtil.format(
-							locPo.getLng(), 4), locPo.getAcc(), addr);
+					Location location = new Location(FormatUtil.format(locPo.getLat(), 4),
+							FormatUtil.format(locPo.getLng(), 4), locPo.getAcc(), addr);
 					result.put(cell, location);
 				}
 			}
@@ -212,14 +218,12 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 				System.out.println(cell.toLogStr());
 				if (cell instanceof CDMACell) {
 					CDMACell cdma = (CDMACell) cell;
-					locationDao.updateCDMAAddress(cdma.getMcc(), cdma.getSid(),
-							cdma.getNid(), cdma.getBid(),
-							FormatUtil.address2str(addr));
+					locationDao.updateCDMAAddress(cdma.getMcc(), cdma.getSid(), cdma.getNid(),
+							cdma.getBid(), FormatUtil.address2str(addr));
 				} else if (cell instanceof GSMCell) {
 					GSMCell gsm = (GSMCell) cell;
-					locationDao.updateGSMAddress(gsm.getMcc(), gsm.getMnc(),
-							gsm.getLac(), gsm.getCid(),
-							FormatUtil.address2str(addr));
+					locationDao.updateGSMAddress(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
+							gsm.getCid(), FormatUtil.address2str(addr));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -227,8 +231,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 		}
 	}
 
-	private void locate2log(List<Cell> cells, List<Wifi> wifis,
-			List<Coord> coords) {
+	private void locate2log(List<Cell> cells, List<Wifi> wifis, List<Coord> coords) {
 		StringBuilder sb = new StringBuilder();
 		// add cell info
 		String cellsInfo = cells2log(cells);

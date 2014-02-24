@@ -53,7 +53,7 @@
 	</filter-mapping>
 
 	<servlet>
-		<servlet-name>lynx-web</servlet-name>
+		<servlet-name>lynx-mapi</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
 		<init-param>
@@ -65,7 +65,7 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>lynx-web</servlet-name>
+		<servlet-name>lynx-mapi</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 

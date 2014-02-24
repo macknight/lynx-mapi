@@ -11,22 +11,22 @@
 	</bean>
 
 	<bean id="locationDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.lynx.geo.service.dao.LocationDao"/>
+		<property name="mapperInterface" value="com.lynx.geo.dao.LocationDao"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
 	<bean id="rgcDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.lynx.geo.service.dao.RGCDao"/>
+		<property name="mapperInterface" value="com.lynx.geo.dao.RGCDao"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
 	<bean id="offsetDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.lynx.geo.service.dao.OffsetDao"/>
+		<property name="mapperInterface" value="com.lynx.geo.dao.OffsetDao"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
 	<bean id="dexConfigDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.lynx.dexconfig.service.dao.DexConfigDao"/>
+		<property name="mapperInterface" value="com.lynx.dexconfig.dao.DexConfigDao"/>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 

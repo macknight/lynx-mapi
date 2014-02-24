@@ -22,8 +22,7 @@ public class Campaign {
 	@Expose
 	private int shopId;
 
-	public Campaign(int id, String title, String content, long beginTime,
-			long endTime, int shopId) {
+	public Campaign(int id, String title, String content, long beginTime, long endTime, int shopId) {
 		this.id = id;
 		this.title = title;
 		this.content = content;

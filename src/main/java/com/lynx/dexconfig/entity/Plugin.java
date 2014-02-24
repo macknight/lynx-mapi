@@ -20,8 +20,8 @@ public class Plugin extends Config {
 
 	}
 
-	public Plugin(String module, int version, String name, String icon,
-			String desc, String url, String md5, String clazz, int category) {
+	public Plugin(String module, int version, String name, String icon, String desc, String url,
+			String md5, String clazz, int category) {
 		super(module, version, url, md5, desc, clazz);
 		this.name = name;
 		this.icon = icon;

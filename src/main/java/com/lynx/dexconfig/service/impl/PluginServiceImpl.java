@@ -2,7 +2,7 @@ package com.lynx.dexconfig.service.impl;
 
 import com.lynx.dexconfig.entity.Plugin;
 import com.lynx.dexconfig.service.PluginService;
-import com.lynx.dexconfig.service.dao.DexConfigDao;
+import com.lynx.dexconfig.dao.DexConfigDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.lynx.test.dexconfig;
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.dexconfig.entity.Config;
 import com.lynx.dexconfig.entity.Plugin;
-import com.lynx.dexconfig.service.dao.DexConfigDao;
+import com.lynx.dexconfig.dao.DexConfigDao;
 import com.lynx.test.BasicTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +44,11 @@ public class DexConfigTest extends BasicTest {
         List<Plugin> plugins = dexConfigDao.getMyPlugins(myPlugins);
         System.out.println(EncryptUtil.format(plugins));
     }
+
+	@Test
+	public void test() {
+		String hello = null;
+		String world = "test";
+		System.out.println(String.format("%s%s", hello, world));
+	}
 }

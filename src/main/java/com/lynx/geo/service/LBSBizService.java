@@ -11,6 +11,5 @@ import java.util.List;
  * @addtime 13-8-19 上午10:15
  */
 public interface LBSBizService {
-	List<Campaign> campaignNearby(double lat, double lng, int range)
-			throws Exception;
+	List<Campaign> campaignNearby(double lat, double lng, int range) throws Exception;
 }

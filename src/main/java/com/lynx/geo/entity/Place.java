@@ -20,8 +20,7 @@ public class Place {
 	@Expose
 	private double lng;
 
-	public Place(String name, String address, String telephone, double lat,
-			double lng) {
+	public Place(String name, String address, String telephone, double lat, double lng) {
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;

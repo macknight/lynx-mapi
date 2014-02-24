@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="lynx" namespace="/lynx" extends="struts-default">
+		<interceptors>
+			<interceptor name="maintainEntitlementInterceptor" class="com.dianping.columbus.maintain.entilement.EntitlmentFilter">
+			</interceptor>
+			<interceptor name="maintainCatInterceptor" class="com.dianping.columbus.CatInterceptor">
+			</interceptor>
+			<interceptor name="pageDeliverInterceptor" class="com.dianping.columbus.utils.PageInterceptor">
+			</interceptor>
+			<interceptor-stack name="maintainInterceptorStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="maintainCatInterceptor" />
+				<interceptor-ref name="maintainEntitlementInterceptor" />
+				<interceptor-ref name="pageDeliverInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="maintainInterceptorStack">
+		</default-interceptor-ref>
+
+		<global-results>
+			<result name="error">error.jsp</result>
+			<result name="login" type="redirectAction">login</result>
+		</global-results>
+
+	</package>
+</struts>

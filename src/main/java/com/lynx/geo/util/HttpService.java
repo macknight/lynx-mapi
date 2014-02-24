@@ -15,11 +15,9 @@ public class HttpService extends ThreadPoolExecutor {
 	private final AtomicLong taskNum = new AtomicLong();
 	private final AtomicLong totalTime = new AtomicLong();
 
-	public HttpService(int corePoolSize, int maxPoolSize, long keepAliveTime,
-			TimeUnit timeUnit, BlockingQueue<Runnable> workQueue,
-			RejectedExecutionHandler handler) {
-		super(corePoolSize, maxPoolSize, keepAliveTime, timeUnit, workQueue,
-				handler);
+	public HttpService(int corePoolSize, int maxPoolSize, long keepAliveTime, TimeUnit timeUnit,
+			BlockingQueue<Runnable> workQueue, RejectedExecutionHandler handler) {
+		super(corePoolSize, maxPoolSize, keepAliveTime, timeUnit, workQueue, handler);
 	}
 
 	@Override
@@ -36,8 +34,7 @@ public class HttpService extends ThreadPoolExecutor {
 			long taskTime = endTime - startTime.get();
 			taskNum.incrementAndGet();
 			totalTime.addAndGet(taskTime);
-			System.out.println(String.format("Thread %s: end %s, time=%s", t,
-					r, taskTime));
+			System.out.println(String.format("Thread %s: end %s, time=%s", t, r, taskTime));
 		} finally {
 			super.afterExecute(r, t);
 		}
@@ -76,8 +73,7 @@ public class HttpService extends ThreadPoolExecutor {
 
 	public static void main(String[] args) throws Exception {
 		HttpService httpService = new HttpService(3, 4, 4, TimeUnit.SECONDS,
-				new ArrayBlockingQueue<Runnable>(3),
-				new ThreadPoolExecutor.CallerRunsPolicy());
+				new ArrayBlockingQueue<Runnable>(3), new ThreadPoolExecutor.CallerRunsPolicy());
 
 		for (int i = 0; i < 5; ++i) {
 			try {
@@ -93,7 +89,7 @@ public class HttpService extends ThreadPoolExecutor {
 
 		Thread.sleep(5000);
 		httpService.shutdown();
-		System.out.println(httpService.getTaskCount() + " c:"
-				+ httpService.getCompletedTaskCount());
+		System.out
+				.println(httpService.getTaskCount() + " c:" + httpService.getCompletedTaskCount());
 	}
 }

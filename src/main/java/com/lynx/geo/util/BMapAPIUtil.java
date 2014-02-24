@@ -43,8 +43,7 @@ public class BMapAPIUtil {
 			params.add(new BasicNameValuePair("output", "json"));
 			params.add(new BasicNameValuePair("pois", "0"));
 			String param = URLEncodedUtils.format(params, "UTF-8");
-			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER,
-					param));
+			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER, param));
 			HttpResponse httpResp = httpClient.execute(httpGet);
 
 			if (httpResp.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
@@ -57,18 +56,15 @@ public class BMapAPIUtil {
 			if (joResult == null || joResult.getInt("status") != 0) {
 				return null;
 			}
-			JSONObject joAddr = joResult.getJSONObject("result").getJSONObject(
-					"addressComponent");
+			JSONObject joAddr = joResult.getJSONObject("result").getJSONObject("addressComponent");
 			String province = joAddr.getString("province");
 			String city = joAddr.getString("city");
 			String district = joAddr.getString("district");
 			String street = joAddr.getString("street");
 			String streetNo = joAddr.getString("street_number");
 
-			if (StringUtils.isNotBlank(city)
-					&& StringUtils.isNotBlank(district)
-					&& StringUtils.isNotBlank(province)
-					&& StringUtils.isNotBlank(street)) {
+			if (StringUtils.isNotBlank(city) && StringUtils.isNotBlank(district)
+					&& StringUtils.isNotBlank(province) && StringUtils.isNotBlank(street)) {
 
 				return new Address(province, city, district, street, streetNo);
 			}
@@ -103,8 +99,7 @@ public class BMapAPIUtil {
 			params.add(new BasicNameValuePair("address", address));
 			params.add(new BasicNameValuePair("output", "json"));
 			String param = URLEncodedUtils.format(params, "UTF-8");
-			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER,
-					param));
+			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER, param));
 
 			HttpResponse httpResp = httpClient.execute(httpGet);
 			if (httpResp.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -114,8 +109,7 @@ public class BMapAPIUtil {
 				if (jo.getInt("status") != 0) {
 					return null;
 				}
-				JSONObject joLoc = jo.getJSONObject("result").getJSONObject(
-						"location");
+				JSONObject joLoc = jo.getJSONObject("result").getJSONObject("location");
 				double lat = joLoc.getDouble("lat");
 				double lng = joLoc.getDouble("lng");
 				return new GeoPoint(lat, lng);
@@ -158,8 +152,7 @@ public class BMapAPIUtil {
 			params.add(new BasicNameValuePair("address", address));
 			params.add(new BasicNameValuePair("city", city));
 			String param = URLEncodedUtils.format(params, "UTF-8");
-			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER,
-					param));
+			httpGet = new HttpGet(String.format("%s?%s", BMAP_API_GEOCODER, param));
 
 			HttpResponse httpResp = httpClient.execute(httpGet);
 			if (httpResp.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -169,8 +162,7 @@ public class BMapAPIUtil {
 				if (jo.getInt("status") != 0) {
 					return;
 				}
-				JSONObject joLoc = jo.getJSONObject("result").getJSONObject(
-						"location");
+				JSONObject joLoc = jo.getJSONObject("result").getJSONObject("location");
 				double lat = joLoc.getDouble("lat");
 				double lng = joLoc.getDouble("lng");
 			}
