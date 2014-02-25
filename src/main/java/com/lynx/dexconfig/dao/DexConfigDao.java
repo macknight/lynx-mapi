@@ -3,6 +3,7 @@ package com.lynx.dexconfig.dao;
 import com.lynx.dexconfig.entity.Config;
 import com.lynx.dexconfig.entity.Plugin;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
