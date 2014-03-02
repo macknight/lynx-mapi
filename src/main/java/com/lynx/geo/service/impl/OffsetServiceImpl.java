@@ -3,7 +3,6 @@ package com.lynx.geo.service.impl;
 import com.lynx.core.BasicService;
 import com.lynx.geo.service.OffsetService;
 import com.lynx.geo.dao.OffsetDao;
-import com.lynx.geo.entity.Coord;
 import com.lynx.geo.entity.Coord.CoordType;
 import com.lynx.geo.entity.GeoPoint;
 import com.lynx.geo.util.GeoUtil;
@@ -73,7 +72,7 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 				return getFixedGeoPoint(tmpGp3, CoordType.GOOGLE, dct);
 			case GAODE:
 				GeoPoint tmpGp4 = getFixedGeoPoint(result, sct, CoordType.GOOGLE);
-				GeoPoint tmpGp5 = getFixedGeoPoint(tmpGp4, CoordType.GOOGLE, Coord.CoordType.GPS);
+				GeoPoint tmpGp5 = getFixedGeoPoint(tmpGp4, CoordType.GOOGLE, CoordType.GPS);
 				return getFixedGeoPoint(tmpGp5, CoordType.GPS, dct);
 			default:
 				return result;

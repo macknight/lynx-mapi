@@ -1,11 +1,13 @@
 package com.lynx.geo.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.lynx.geo.dao.entity.LocationPo;
 import com.lynx.geo.entity.CDMACellInfo;
 import com.lynx.geo.entity.GSMCellInfo;
-import com.lynx.geo.dao.entity.LocationPo;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * 
@@ -13,6 +15,7 @@ import java.util.List;
  * 
  * @version 13-10-26-上午11:14
  */
+@Repository(value = "locationDao")
 public interface LocationDao {
 
 	LocationPo getCDMALocation(@Param(value = "mcc") int mcc, @Param(value = "sid") int sid,

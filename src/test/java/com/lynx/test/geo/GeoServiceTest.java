@@ -3,6 +3,7 @@ package com.lynx.test.geo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lynx.geo.dao.LocationDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +11,6 @@ import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
-import com.lynx.geo.service.dao.LocationDao;
 import com.lynx.test.BasicTest;
 
 /**

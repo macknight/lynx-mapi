@@ -1,11 +1,12 @@
 package com.lynx.dexconfig.dao;
 
-import com.lynx.dexconfig.entity.Config;
-import com.lynx.dexconfig.entity.Plugin;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.lynx.dexconfig.entity.Config;
+import com.lynx.dexconfig.entity.Plugin;
 
 /**
  * 
@@ -13,6 +14,7 @@ import java.util.List;
  * 
  * @version 13-11-13 下午5:46
  */
+@Repository(value="dexConfigDao")
 public interface DexConfigDao {
 
 	/**

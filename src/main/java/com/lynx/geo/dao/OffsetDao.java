@@ -2,6 +2,7 @@ package com.lynx.geo.dao;
 
 import com.lynx.geo.entity.GeoPoint;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  * 
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * 
  * @version 13-8-8 下午5:22
  */
+@Repository(value = "offsetDao")
 public interface OffsetDao {
 
 	GeoPoint getGPS2MapbarOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
