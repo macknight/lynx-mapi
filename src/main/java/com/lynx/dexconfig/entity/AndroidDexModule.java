@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @version 13-11-17 下午2:15
  */
-public class Config {
+public class AndroidDexModule {
 	@Expose
 	private String module;
 	@Expose
@@ -24,17 +24,8 @@ public class Config {
 
 	private String test;
 
-	public Config() {
+	public AndroidDexModule() {
 
-	}
-
-	public Config(String module, int version, String url, String md5, String desc, String clazz) {
-		this.module = module;
-		this.version = version;
-		this.url = url;
-		this.md5 = md5;
-		this.desc = desc;
-		this.clazz = clazz;
 	}
 
 	public String getModule() {

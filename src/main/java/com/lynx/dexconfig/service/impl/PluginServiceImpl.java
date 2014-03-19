@@ -1,12 +1,13 @@
 package com.lynx.dexconfig.service.impl;
 
-import com.lynx.dexconfig.entity.Plugin;
-import com.lynx.dexconfig.service.PluginService;
-import com.lynx.dexconfig.dao.DexConfigDao;
+import java.util.List;
+
+import com.lynx.dexconfig.entity.AndroidPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.lynx.dexconfig.service.PluginService;
+import com.lynx.mapper.cb.dexconfig.DexConfigMapper;
 
 /**
  * 
@@ -18,28 +19,28 @@ import java.util.List;
 public class PluginServiceImpl implements PluginService {
 
 	@Autowired
-	private DexConfigDao dexConfigDao;
+	private DexConfigMapper dexConfigMapper;
 
 	@Override
-	public List<Plugin> allPlugins() {
-		return dexConfigDao.getAllPlugins();
+	public List<AndroidPlugin> allPlugins() {
+		return dexConfigMapper.getAllPlugins();
 	}
 
 	@Override
-	public List<Plugin> pluginByCategory(int category) {
-		return dexConfigDao.getPluginByCategory(category);
+	public List<AndroidPlugin> pluginByCategory(int category) {
+		return dexConfigMapper.getPluginByCategory(category);
 	}
 
 	@Override
-	public List<Plugin> searchPlugin(String keyword) {
+	public List<AndroidPlugin> searchPlugin(String keyword) {
 		String param = "%" + keyword + "%";
-		return dexConfigDao.getPluginByKeyword(param);
+		return dexConfigMapper.getPluginByKeyword(param);
 	}
 
 	@Override
-	public List<Plugin> myPlugins(List<String> categorys) {
+	public List<AndroidPlugin> myPlugins(List<String> categorys) {
 		try {
-			return dexConfigDao.getMyPlugins(categorys);
+			return dexConfigMapper.getMyPlugins(categorys);
 		} catch (Exception e) {
 
 		}

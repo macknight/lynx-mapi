@@ -1,4 +1,4 @@
-package com.lynx.geo.dao.entity;
+package com.lynx.mapper.cop.geo;
 
 import com.google.gson.annotations.Expose;
 

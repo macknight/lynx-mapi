@@ -1,25 +1,27 @@
 package com.lynx.geo.service.impl;
 
-import com.lynx.core.BasicService;
-import com.lynx.geo.entity.*;
-import com.lynx.geo.service.GeoService;
-import com.lynx.geo.dao.LocationDao;
-import com.lynx.geo.dao.RGCDao;
-import com.lynx.geo.dao.entity.LocationPo;
-import com.lynx.geo.util.BMapAPIUtil;
-import com.lynx.geo.util.FormatUtil;
-import com.lynx.geo.util.GeoUtil;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import javax.annotation.PostConstruct;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lynx.core.BasicService;
+import com.lynx.geo.entity.*;
+import com.lynx.geo.service.GeoService;
+import com.lynx.geo.util.BMapAPIUtil;
+import com.lynx.geo.util.FormatUtil;
+import com.lynx.geo.util.GeoUtil;
+import com.lynx.mapper.cop.geo.LocationMapper;
+import com.lynx.mapper.cop.geo.LocationPo;
+import com.lynx.mapper.cop.geo.RGCMapper;
 
 /**
  * 
@@ -33,10 +35,10 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 	private static final int THREAD_POOL_SIZE = 5;
 
 	@Autowired
-	private LocationDao locationDao;
+	private LocationMapper locationMapper;
 
 	@Autowired
-	private RGCDao rgcDao;
+	private RGCMapper rgcMapper;
 
 	// private Logger locateLog = Logger.getLogger("locate-log");
 	// private Logger rgcLog = Logger.getLogger("rgc-log");
@@ -101,12 +103,12 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 
 	@Override
 	public List<GSMCellInfo> gsmCellInfo(int page, int pageSize) {
-		return locationDao.getGSMCellInfo(page * pageSize, pageSize);
+		return locationMapper.getGSMCellInfo(page * pageSize, pageSize);
 	}
 
 	@Override
 	public List<CDMACellInfo> cdmaCellInfo(int page, int pageSize) {
-		return locationDao.getCDMACellInfo(page * pageSize, pageSize);
+		return locationMapper.getCDMACellInfo(page * pageSize, pageSize);
 	}
 
 	private Location getCellLocation(List<Cell> cells) {
@@ -117,13 +119,13 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 				switch (cell.type()) {
 				case CDMA: {
 					CDMACell cdma = (CDMACell) cell;
-					locPo = locationDao.getCDMALocation(cdma.getMcc(), cdma.getSid(),
+					locPo = locationMapper.getCDMALocation(cdma.getMcc(), cdma.getSid(),
 							cdma.getNid(), cdma.getBid());
 					break;
 				}
 				case GSM: {
 					GSMCell gsm = (GSMCell) cell;
-					locPo = locationDao.getGSMLocation(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
+					locPo = locationMapper.getGSMLocation(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
 							gsm.getCid());
 					break;
 				}
@@ -185,7 +187,7 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 			for (Wifi wifi : wifis) {
 				macs.add(GeoUtil.mac2long(wifi.getMac()));
 			}
-			List<LocationPo> result = locationDao.getWifiLocation(macs);
+			List<LocationPo> result = locationMapper.getWifiLocation(macs);
 			return getBstWifiCoord(result);
 		} catch (Exception e) {
 
@@ -218,11 +220,11 @@ public class GeoServiceImpl extends BasicService implements GeoService {
 				System.out.println(cell.toLogStr());
 				if (cell instanceof CDMACell) {
 					CDMACell cdma = (CDMACell) cell;
-					locationDao.updateCDMAAddress(cdma.getMcc(), cdma.getSid(), cdma.getNid(),
+					locationMapper.updateCDMAAddress(cdma.getMcc(), cdma.getSid(), cdma.getNid(),
 							cdma.getBid(), FormatUtil.address2str(addr));
 				} else if (cell instanceof GSMCell) {
 					GSMCell gsm = (GSMCell) cell;
-					locationDao.updateGSMAddress(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
+					locationMapper.updateGSMAddress(gsm.getMcc(), gsm.getMnc(), gsm.getLac(),
 							gsm.getCid(), FormatUtil.address2str(addr));
 				}
 			} catch (Exception e) {

@@ -8,7 +8,7 @@ import com.google.gson.annotations.Expose;
  * 
  * @version 13-11-13 下午5:35
  */
-public class Plugin extends Config {
+public class AndroidPlugin extends AndroidDexModule {
 	@Expose
 	private String name;
 	@Expose
@@ -16,16 +16,8 @@ public class Plugin extends Config {
 	@Expose
 	private int category;
 
-	public Plugin() {
+	public AndroidPlugin() {
 
-	}
-
-	public Plugin(String module, int version, String name, String icon, String desc, String url,
-			String md5, String clazz, int category) {
-		super(module, version, url, md5, desc, clazz);
-		this.name = name;
-		this.icon = icon;
-		this.category = category;
 	}
 
 	public String getName() {

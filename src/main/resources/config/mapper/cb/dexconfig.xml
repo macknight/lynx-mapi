@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lynx.dexconfig.dao.DexConfigDao">
-    <resultMap id="configResult" type="com.lynx.dexconfig.entity.Config">
+<mapper namespace="com.lynx.mapper.cb.dexconfig.DexConfigMapper">
+    <resultMap id="configResult" type="com.lynx.dexconfig.entity.AndroidDexModule">
         <result property="module" column="Module"/>
         <result property="version" column="Version"/>
         <result property="url" column="url"/>
@@ -12,7 +12,7 @@
         <result property="test" column="Test"/>
     </resultMap>
 
-    <resultMap id="pluginResult" type="com.lynx.dexconfig.entity.Plugin">
+    <resultMap id="pluginResult" type="com.lynx.dexconfig.entity.AndroidPlugin">
         <result property="module" column="Module"/>
         <result property="version" column="Version"/>
         <result property="name" column="Name"/>

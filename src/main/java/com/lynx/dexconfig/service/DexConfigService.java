@@ -1,6 +1,6 @@
 package com.lynx.dexconfig.service;
 
-import com.lynx.dexconfig.entity.Config;
+import com.lynx.dexconfig.entity.AndroidDexModule;
 
 import java.util.List;
 
@@ -19,6 +19,6 @@ public interface DexConfigService {
 	 * @param token
 	 * @return
 	 */
-	List<Config> getDexServiceConfig(String ua, String token);
+	List<AndroidDexModule> getDexServiceConfig(String ua, String token);
 
 }

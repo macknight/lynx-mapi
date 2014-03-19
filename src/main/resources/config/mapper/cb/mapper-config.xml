@@ -3,9 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper resource="config/mapper/location.xml"/>
-        <mapper resource="config/mapper/rgc.xml"/>
-        <mapper resource="config/mapper/offset.xml"/>
-        <mapper resource="config/mapper/dexconfig.xml"/>
+        <mapper resource="config/mapper/cb/dexconfig.xml"/>
     </mappers>
 </configuration>

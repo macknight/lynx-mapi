@@ -3,6 +3,8 @@ package com.lynx.dexconfig.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lynx.dexconfig.entity.AndroidDexModule;
+import com.lynx.dexconfig.entity.AndroidPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.lynx.core.BasicController;
 import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
-import com.lynx.dexconfig.entity.Config;
-import com.lynx.dexconfig.entity.Plugin;
 import com.lynx.dexconfig.service.DexConfigService;
 import com.lynx.dexconfig.service.PluginService;
 
@@ -48,7 +48,7 @@ public class DexConfigController extends BasicController {
 			@RequestParam(value = "token", required = false) String token) {
 		Result result = null;
 		try {
-			List<Config> config = dexConfigService.getDexServiceConfig(ua, token);
+			List<AndroidDexModule> config = dexConfigService.getDexServiceConfig(ua, token);
 			if (config != null) {
 				result = new Result(Result.RS_OK, config);
 			} else {
@@ -78,7 +78,7 @@ public class DexConfigController extends BasicController {
 			if (apps.size() <= 0) {
 				result = new Result(Result.RS_FAIL, "参数错误");
 			} else {
-				List<Plugin> plugins = pluginService.myPlugins(apps);
+				List<AndroidPlugin> plugins = pluginService.myPlugins(apps);
 				if (plugins != null && plugins.size() > 0) {
 					result = new Result(Result.RS_OK, plugins);
 				} else {
@@ -101,7 +101,7 @@ public class DexConfigController extends BasicController {
 	public ResponseEntity<String> pluginsAtStore() {
 		Result result = null;
 		try {
-			List<Plugin> plugins = pluginService.allPlugins();
+			List<AndroidPlugin> plugins = pluginService.allPlugins();
 			if (plugins != null && plugins.size() > 0) {
 				result = new Result(Result.RS_OK, plugins);
 			} else {

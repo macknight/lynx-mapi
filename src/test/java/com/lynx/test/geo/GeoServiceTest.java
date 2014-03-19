@@ -3,7 +3,6 @@ package com.lynx.test.geo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lynx.geo.dao.LocationDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,6 +10,7 @@ import com.lynx.core.Result;
 import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
+import com.lynx.mapper.cop.geo.LocationMapper;
 import com.lynx.test.BasicTest;
 
 /**
@@ -25,7 +25,7 @@ public class GeoServiceTest extends BasicTest {
 	private GeoService geoService;
 
 	@Autowired
-	private LocationDao locationDao;
+	private LocationMapper locationMapper;
 
 	@Test
 	public void geoCodingTest() {
@@ -85,7 +85,7 @@ public class GeoServiceTest extends BasicTest {
 	@Test
 	public void updateGeoInfoTest() {
 		try {
-			locationDao.updateCDMAAddress(460, 13840, 12941, 16, "上海市|上海市|闵行区|华翔路|2025弄-18");
+			locationMapper.updateCDMAAddress(460, 13840, 12941, 16, "上海市|上海市|闵行区|华翔路|2025弄-18");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

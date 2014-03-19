@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lynx.core.util.EncryptUtil;
-import com.lynx.dexconfig.dao.DexConfigDao;
-import com.lynx.dexconfig.entity.Config;
-import com.lynx.dexconfig.entity.Plugin;
+import com.lynx.dexconfig.entity.AndroidDexModule;
+import com.lynx.dexconfig.entity.AndroidPlugin;
+import com.lynx.mapper.cb.dexconfig.DexConfigMapper;
 import com.lynx.test.BasicTest;
 
 /**
@@ -21,17 +21,17 @@ import com.lynx.test.BasicTest;
 public class DexConfigTest extends BasicTest {
 
 	@Autowired
-	private DexConfigDao dexConfigDao;
+	private DexConfigMapper dexConfigMapper;
 
 	@Test
 	public void getDexServiceConfigTest() {
-		List<Config> configs = dexConfigDao.getDexServiceConfig();
+		List<AndroidDexModule> configs = dexConfigMapper.getDexServiceConfig();
 		System.out.println(EncryptUtil.format(configs));
 	}
 
 	@Test
 	public void getPluginStoreTest() {
-		List<Plugin> plugins = dexConfigDao.getAllPlugins();
+		List<AndroidPlugin> plugins = dexConfigMapper.getAllPlugins();
 		System.out.println(EncryptUtil.format(plugins));
 	}
 
@@ -39,9 +39,9 @@ public class DexConfigTest extends BasicTest {
 	public void getMyPluginTest() {
 		List<String> myPlugins = new ArrayList<String>();
 		myPlugins.add("local");
-		myPlugins.add("female");
-		myPlugins.add("male");
-		List<Plugin> plugins = dexConfigDao.getMyPlugins(myPlugins);
+		myPlugins.add("parenting");
+		myPlugins.add("timemachine");
+		List<AndroidPlugin> plugins = dexConfigMapper.getMyPlugins(myPlugins);
 		System.out.println(EncryptUtil.format(plugins));
 	}
 

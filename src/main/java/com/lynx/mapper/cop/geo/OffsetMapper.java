@@ -1,8 +1,9 @@
-package com.lynx.geo.dao;
+package com.lynx.mapper.cop.geo;
 
-import com.lynx.geo.entity.GeoPoint;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.lynx.geo.entity.GeoPoint;
 
 /**
  * 
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Repository;
  * 
  * @version 13-8-8 下午5:22
  */
-@Repository(value = "offsetDao")
-public interface OffsetDao {
+@Repository(value = "offsetMapper")
+public interface OffsetMapper {
 
 	GeoPoint getGPS2MapbarOffset(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 

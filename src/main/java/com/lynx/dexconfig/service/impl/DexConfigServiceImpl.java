@@ -1,13 +1,15 @@
 package com.lynx.dexconfig.service.impl;
 
-import com.lynx.dexconfig.entity.Config;
-import com.lynx.dexconfig.service.DexConfigService;
-import com.lynx.dexconfig.dao.DexConfigDao;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import com.lynx.dexconfig.entity.AndroidDexModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.List;
+import com.lynx.dexconfig.service.DexConfigService;
+import com.lynx.mapper.cb.dexconfig.DexConfigMapper;
 
 /**
  * 
@@ -19,7 +21,7 @@ import java.util.List;
 public class DexConfigServiceImpl implements DexConfigService {
 
 	@Autowired
-	private DexConfigDao dexConfigDao;
+	private DexConfigMapper dexConfigMapper;
 
 	@PostConstruct
 	private void init() {
@@ -32,9 +34,9 @@ public class DexConfigServiceImpl implements DexConfigService {
 	 * @return
 	 */
 	@Override
-	public List<Config> getDexServiceConfig(String ua, String token) {
+	public List<AndroidDexModule> getDexServiceConfig(String ua, String token) {
 		try {
-			return dexConfigDao.getDexServiceConfig();
+			return dexConfigMapper.getDexServiceConfig();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

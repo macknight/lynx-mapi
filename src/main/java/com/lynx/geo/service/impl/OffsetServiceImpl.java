@@ -1,16 +1,17 @@
 package com.lynx.geo.service.impl;
 
-import com.lynx.core.BasicService;
-import com.lynx.geo.service.OffsetService;
-import com.lynx.geo.dao.OffsetDao;
-import com.lynx.geo.entity.Coord.CoordType;
-import com.lynx.geo.entity.GeoPoint;
-import com.lynx.geo.util.GeoUtil;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
+import com.lynx.core.BasicService;
+import com.lynx.geo.entity.Coord.CoordType;
+import com.lynx.geo.entity.GeoPoint;
+import com.lynx.geo.service.OffsetService;
+import com.lynx.geo.util.GeoUtil;
+import com.lynx.mapper.cop.geo.OffsetMapper;
 
 /**
  * 
@@ -21,7 +22,7 @@ import java.text.DecimalFormat;
 @Service("offsetService")
 public class OffsetServiceImpl extends BasicService implements OffsetService {
 	@Autowired
-	private OffsetDao offsetDao;
+	private OffsetMapper offsetMapper;
 
 	@Override
 	public GeoPoint offset(GeoPoint origin, CoordType oct, CoordType dct) {
@@ -167,15 +168,15 @@ public class OffsetServiceImpl extends BasicService implements OffsetService {
 		try {
 			if ((sct == CoordType.GPS && dct == CoordType.GOOGLE)
 					|| (sct == CoordType.GOOGLE && dct == CoordType.GPS)) {
-				offsetGp = offsetDao.getGPS2GMapOffset(lat, lng);
+				offsetGp = offsetMapper.getGPS2GMapOffset(lat, lng);
 			} else if ((sct == CoordType.GPS && dct == CoordType.BAIDU)
 					|| (sct == CoordType.BAIDU && dct == CoordType.GPS)) {
-				offsetGp = offsetDao.getGPS2BMapOffset(lat, lng);
+				offsetGp = offsetMapper.getGPS2BMapOffset(lat, lng);
 			} else if ((sct == CoordType.GOOGLE && dct == CoordType.MAPBAR)
 					|| (sct == CoordType.MAPBAR && dct == CoordType.GOOGLE)) {
-				offsetGp = offsetDao.getGPS2MapbarOffset(lat, lng);
+				offsetGp = offsetMapper.getGPS2MapbarOffset(lat, lng);
 			} else {
-				offsetGp = offsetDao.getGPS2AMapOffset(lat, lng);
+				offsetGp = offsetMapper.getGPS2AMapOffset(lat, lng);
 			}
 		} catch (Exception e) {
 			log.error("get offset geopoint error", e);

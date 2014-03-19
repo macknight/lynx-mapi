@@ -1,8 +1,9 @@
-package com.lynx.geo.dao;
+package com.lynx.mapper.cop.geo;
 
-import com.lynx.geo.entity.Address;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.lynx.geo.entity.Address;
 
 /**
  * 
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Repository;
  * 
  * @version 13-8-8 下午3:40
  */
-@Repository(value = "rgcDao")
-public interface RGCDao {
+@Repository(value = "rgcMapper")
+public interface RGCMapper {
 
 	Address getAddress(@Param(value = "lat") double lat, @Param(value = "lng") double lng);
 

@@ -1,6 +1,6 @@
 package com.lynx.dexconfig.service;
 
-import com.lynx.dexconfig.entity.Plugin;
+import com.lynx.dexconfig.entity.AndroidPlugin;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface PluginService {
 	 * 
 	 * @return
 	 */
-	List<Plugin> allPlugins();
+	List<AndroidPlugin> allPlugins();
 
 	/**
 	 * 根据类别获取插件
@@ -25,7 +25,7 @@ public interface PluginService {
 	 * @param category
 	 * @return
 	 */
-	List<Plugin> pluginByCategory(int category);
+	List<AndroidPlugin> pluginByCategory(int category);
 
 	/**
 	 * 根据关键字获取插件
@@ -33,7 +33,7 @@ public interface PluginService {
 	 * @param keyword
 	 * @return
 	 */
-	List<Plugin> searchPlugin(String keyword);
+	List<AndroidPlugin> searchPlugin(String keyword);
 
 	/**
 	 * 获取我的插件配置
@@ -41,5 +41,5 @@ public interface PluginService {
 	 * @param categorys
 	 * @return
 	 */
-	List<Plugin> myPlugins(List<String> categorys);
+	List<AndroidPlugin> myPlugins(List<String> categorys);
 }
