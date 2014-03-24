@@ -5,7 +5,7 @@
     <artifactId>lynx-mapi</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>lynx-mapi</name>
+    <name>m</name>
 
     <properties>
         <env>dev</env>

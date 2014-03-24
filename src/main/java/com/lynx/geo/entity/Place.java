@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-12 上午10:20
  */
 public class Place {

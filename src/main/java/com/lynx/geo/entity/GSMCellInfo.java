@@ -2,7 +2,6 @@ package com.lynx.geo.entity;
 
 /**
  * @author: chris.liu
- * 
  * @addtime: 13-12-23 下午3:18
  */
 public class GSMCellInfo {

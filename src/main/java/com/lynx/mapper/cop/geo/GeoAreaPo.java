@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-9 下午1:28
  */
 public class GeoAreaPo {

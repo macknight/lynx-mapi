@@ -16,7 +16,6 @@ import com.lynx.mapper.cop.geo.OffsetMapper;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午5:23
  */
 @Service("offsetService")

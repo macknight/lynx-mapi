@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-14 下午2:03
  */
 public class GMapAPIUtil {

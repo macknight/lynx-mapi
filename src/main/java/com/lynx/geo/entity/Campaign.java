@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-19 上午10:16
  */
 public class Campaign {
@@ -22,13 +21,8 @@ public class Campaign {
 	@Expose
 	private int shopId;
 
-	public Campaign(int id, String title, String content, long beginTime, long endTime, int shopId) {
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.beginTime = beginTime;
-		this.endTime = endTime;
-		this.shopId = shopId;
+	public Campaign() {
+
 	}
 
 	public int getId() {

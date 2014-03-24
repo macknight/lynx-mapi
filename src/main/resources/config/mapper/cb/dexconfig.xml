@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lynx.mapper.cb.dexconfig.DexConfigMapper">
-    <resultMap id="configResult" type="com.lynx.dexconfig.entity.AndroidDexModule">
+
+    <resultMap id="configResult" type="androidDexModule">
         <result property="module" column="Module"/>
         <result property="version" column="Version"/>
         <result property="url" column="url"/>
@@ -12,7 +13,7 @@
         <result property="test" column="Test"/>
     </resultMap>
 
-    <resultMap id="pluginResult" type="com.lynx.dexconfig.entity.AndroidPlugin">
+    <resultMap id="pluginResult" type="androidPlugin">
         <result property="module" column="Module"/>
         <result property="version" column="Version"/>
         <result property="name" column="Name"/>

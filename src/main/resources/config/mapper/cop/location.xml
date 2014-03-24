@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lynx.mapper.cop.geo.LocationMapper">
-	<resultMap id="locationResult" type="com.lynx.mapper.cop.geo.LocationPo">
+	<resultMap id="locationResult" type="location">
 		<result property="lat" column="Lat"/>
 		<result property="lng" column="Lng"/>
 		<result property="acc" column="Acc"/>
 		<result property="addr" column="Addr"/>
 	</resultMap>
 
-	<resultMap id="gsmCellInfoResult" type="com.lynx.geo.entity.GSMCellInfo">
+	<resultMap id="gsmCellInfoResult" type="gsmCellInfo">
 		<result property="mcc" column="MCC"/>
 		<result property="mnc" column="MNC"/>
 		<result property="lac" column="LAC"/>
@@ -20,7 +20,7 @@
 		<result property="addr" column="Addr"/>
 	</resultMap>
 
-	<resultMap id="cdmaCellInfoResult" type="com.lynx.geo.entity.CDMACellInfo">
+	<resultMap id="cdmaCellInfoResult" type="cdmaCellInfo">
 		<result property="mcc" column="MCC"/>
 		<result property="sid" column="SID"/>
 		<result property="nid" column="NID"/>

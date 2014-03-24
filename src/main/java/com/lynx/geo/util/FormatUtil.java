@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-9 上午9:37
  */
 public class FormatUtil {
@@ -38,8 +37,12 @@ public class FormatUtil {
 				int bid = Integer.parseInt(tmp[3]);
 				long lat = Long.parseLong(tmp[4]);
 				long lng = Long.parseLong(tmp[5]);
-				CDMACell cdmaCell = new CDMACell(mcc, sid, nid, bid, lat, lng);
-				cells.add(cdmaCell);
+                CDMACell cell = new CDMACell();
+                cell.setMcc(mcc);
+                cell.setSid(sid);
+                cell.setNid(nid);
+                cell.setBid(bid);
+				cells.add(cell);
 			} catch (Exception e) {
 				cells = null;
 			}
@@ -55,8 +58,12 @@ public class FormatUtil {
 					int lac = Integer.parseInt(tmp3[2]);
 					int cid = Integer.parseInt(tmp3[3]);
 					int asu = Integer.parseInt(tmp3[4]);
-					GSMCell gsmCell = new GSMCell(mcc, mnc, lac, cid, asu);
-					cells.add(gsmCell);
+                    GSMCell cell = new GSMCell();
+                    cell.setMcc(mcc);
+                    cell.setMnc(mnc);
+                    cell.setLac(lac);
+                    cell.setCid(cid);
+					cells.add(cell);
 				}
 			} catch (Exception e) {
 				cells = null;
@@ -101,7 +108,13 @@ public class FormatUtil {
 	public static Address str2address(String str) {
 		try {
 			String[] tmp = str.split("\\|");
-			return new Address(tmp[0], tmp[1], tmp[2], tmp[3], tmp[4]);
+            Address addr = new Address();
+            addr.setProvince(tmp[0]);
+            addr.setCity(tmp[1]);
+            addr.setRegion(tmp[2]);
+            addr.setStreet(tmp[3]);
+            addr.setNum(tmp[4]);
+			return addr;
 		} catch (Exception e) {
 
 		}

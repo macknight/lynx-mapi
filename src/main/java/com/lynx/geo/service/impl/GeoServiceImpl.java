@@ -26,7 +26,6 @@ import com.lynx.mapper.cop.geo.RGCMapper;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午3:38
  */
 @Service("geoService")

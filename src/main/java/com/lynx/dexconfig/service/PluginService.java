@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-11-13 下午5:34
  */
 public interface PluginService {

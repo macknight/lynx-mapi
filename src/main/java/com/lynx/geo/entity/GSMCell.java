@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午6:22
  */
 public class GSMCell implements Cell {
@@ -20,7 +19,11 @@ public class GSMCell implements Cell {
 	@Expose
 	private int asu; // single strength
 
-	public GSMCell(int mcc, int mnc, int lac, int cid, int asu) {
+    public GSMCell() {
+
+    }
+
+    public GSMCell(int mcc, int mnc, int lac, int cid, int asu) {
 		this.mcc = mcc;
 		this.mnc = mnc;
 		this.lac = lac;

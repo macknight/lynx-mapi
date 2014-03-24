@@ -3,7 +3,6 @@ package com.lynx.geo.entity;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午5:49
  */
 public interface Cell {

@@ -3,7 +3,6 @@ package com.lynx.mapper.cop.geo;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-11-2-下午4:09
  */
 public class LocationPo {

@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:config/spring/appcontext-*.xml",
 		"classpath*:config/spring/appcontext-*.xml" })
-public class BasicTest {
+public class BaseTest {
 	static {
 //		DOMConfigurator.configure("target/classes/log/log4j-argus.xml");
 	}

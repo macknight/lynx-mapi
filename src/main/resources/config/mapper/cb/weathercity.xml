@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lynx.mapper.cb.weather.WeatherCityMapper">
+
+    <resultMap id="weatherCityResult" type="weatherCity">
+        <result property="id" column="Id"/>
+        <result property="nameCH" column="NameCH"/>
+        <result property="nameEN" column="NameEN"/>
+        <result property="code" column="WeatherCode"/>
+    </resultMap>
+
+    <select id="getAllWeatherCity" resultMap="weatherCityResult">
+        SELECT * FROM LM_CityInfo
+    </select>
+
+    <select id="getWeatherCityById" resultMap="weatherCityResult">
+        SELECT * FROM LM_CityInfo WHERE Id=#{cityId};
+    </select>
+
+    <select id="getWeatherCityByName" resultMap="weatherCityResult">
+        SELECT * FROM LM_CityInfo WHERE NameCH=#{cityName};
+    </select>
+
+</mapper>

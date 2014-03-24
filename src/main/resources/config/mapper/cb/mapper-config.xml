@@ -2,7 +2,16 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <typeAliases>
+        <typeAlias alias="weatherCity" type="com.lynx.mapper.cb.weather.WeatherCityPO"/>
+        <typeAlias alias="androidDexModule" type="com.lynx.dexconfig.entity.AndroidDexModule"/>
+        <typeAlias alias="androidPlugin" type="com.lynx.dexconfig.entity.AndroidPlugin"/>
+    </typeAliases>
+
     <mappers>
         <mapper resource="config/mapper/cb/dexconfig.xml"/>
+        <mapper resource="config/mapper/cb/weathercity.xml"/>
     </mappers>
+
 </configuration>

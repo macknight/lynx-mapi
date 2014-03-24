@@ -22,7 +22,6 @@ import com.lynx.dexconfig.service.PluginService;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-10-27-下午12:09
  */
 @Controller

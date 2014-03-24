@@ -14,7 +14,6 @@ import com.lynx.mapper.cb.dexconfig.DexConfigMapper;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-10-27-下午12:11
  */
 @Service("configService")

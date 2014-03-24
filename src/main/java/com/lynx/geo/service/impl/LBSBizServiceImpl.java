@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-19 上午10:20
  */
 @Service("lbsBizService")

@@ -3,6 +3,7 @@ package com.lynx.test.dexconfig;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lynx.test.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +11,6 @@ import com.lynx.core.util.EncryptUtil;
 import com.lynx.dexconfig.entity.AndroidDexModule;
 import com.lynx.dexconfig.entity.AndroidPlugin;
 import com.lynx.mapper.cb.dexconfig.DexConfigMapper;
-import com.lynx.test.BasicTest;
 
 /**
  * 
@@ -18,7 +18,7 @@ import com.lynx.test.BasicTest;
  * 
  * @version 13-11-13 下午6:15
  */
-public class DexConfigTest extends BasicTest {
+public class DexConfigTest extends BaseTest {
 
 	@Autowired
 	private DexConfigMapper dexConfigMapper;

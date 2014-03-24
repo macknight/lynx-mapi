@@ -2,6 +2,13 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <typeAliases>
+        <typeAlias alias="cdmaCellInfo" type="com.lynx.geo.entity.CDMACellInfo"/>
+        <typeAlias alias="gsmCellInfo" type="com.lynx.geo.entity.GSMCellInfo"/>
+        <typeAlias alias="location" type="com.lynx.mapper.cop.geo.LocationPo"/>
+    </typeAliases>
+
     <mappers>
         <mapper resource="config/mapper/cop/location.xml"/>
         <mapper resource="config/mapper/cop/rgc.xml"/>

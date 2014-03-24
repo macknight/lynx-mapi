@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-10-27-下午12:10
  */
 public interface DexConfigService {

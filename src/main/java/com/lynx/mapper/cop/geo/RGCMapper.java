@@ -8,7 +8,6 @@ import com.lynx.geo.entity.Address;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午3:40
  */
 @Repository(value = "rgcMapper")

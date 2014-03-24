@@ -3,7 +3,6 @@ package com.lynx.geo.entity;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-22 上午10:12
  */
 public class User {

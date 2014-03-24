@@ -3,7 +3,6 @@ package com.lynx.core;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-19 上午10:23
  */
 public class BasicException extends Exception {

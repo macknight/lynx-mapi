@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-11-13 下午5:46
  */
 @Repository(value = "dexConfigMapper")

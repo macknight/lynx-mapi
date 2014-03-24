@@ -1,5 +1,6 @@
 package com.lynx.test.geo;
 
+import com.lynx.test.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,7 +8,6 @@ import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.Coord.CoordType;
 import com.lynx.geo.entity.GeoPoint;
 import com.lynx.geo.service.OffsetService;
-import com.lynx.test.BasicTest;
 
 /**
  * 
@@ -15,7 +15,7 @@ import com.lynx.test.BasicTest;
  * 
  * @version 13-8-15 下午4:55
  */
-public class OffsetServiceTest extends BasicTest {
+public class OffsetServiceTest extends BaseTest {
 
 	@Autowired
 	private OffsetService offsetService;

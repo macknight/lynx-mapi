@@ -3,6 +3,7 @@ package com.lynx.test.geo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lynx.test.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +12,6 @@ import com.lynx.core.util.EncryptUtil;
 import com.lynx.geo.entity.*;
 import com.lynx.geo.service.GeoService;
 import com.lynx.mapper.cop.geo.LocationMapper;
-import com.lynx.test.BasicTest;
 
 /**
  * 
@@ -19,7 +19,7 @@ import com.lynx.test.BasicTest;
  * 
  * @version 13-8-13 下午5:51
  */
-public class GeoServiceTest extends BasicTest {
+public class GeoServiceTest extends BaseTest {
 
 	@Autowired
 	private GeoService geoService;

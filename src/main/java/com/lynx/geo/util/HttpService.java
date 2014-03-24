@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-13 上午9:33
  */
 public class HttpService extends ThreadPoolExecutor {

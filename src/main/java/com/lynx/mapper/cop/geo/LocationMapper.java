@@ -11,7 +11,6 @@ import com.lynx.geo.entity.GSMCellInfo;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-10-26-上午11:14
  */
 @Repository(value = "locationMapper")

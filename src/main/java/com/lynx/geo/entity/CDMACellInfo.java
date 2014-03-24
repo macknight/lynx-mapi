@@ -3,7 +3,6 @@ package com.lynx.geo.entity;
 /**
  * 
  * @author chris.liu
- * 
  * @version 13-12-23 下午3:20
  */
 public class CDMACellInfo {

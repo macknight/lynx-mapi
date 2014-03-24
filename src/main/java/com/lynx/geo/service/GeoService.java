@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午3:25
  */
 public interface GeoService {

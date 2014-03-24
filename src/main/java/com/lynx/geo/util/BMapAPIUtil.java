@@ -20,7 +20,6 @@ import java.util.List;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-13 下午5:25
  */
 public class BMapAPIUtil {
@@ -65,8 +64,13 @@ public class BMapAPIUtil {
 
 			if (StringUtils.isNotBlank(city) && StringUtils.isNotBlank(district)
 					&& StringUtils.isNotBlank(province) && StringUtils.isNotBlank(street)) {
-
-				return new Address(province, city, district, street, streetNo);
+                Address addr = new Address();
+                addr.setProvince(province);
+                addr.setCity(city);
+                addr.setRegion(district);
+                addr.setStreet(street);
+                addr.setNum(streetNo);
+				return addr;
 			}
 		} catch (Exception e) {
 

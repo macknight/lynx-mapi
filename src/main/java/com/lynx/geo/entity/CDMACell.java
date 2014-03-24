@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午6:22
  */
 public class CDMACell implements Cell {
@@ -22,7 +21,11 @@ public class CDMACell implements Cell {
 	@Expose
 	private long lng;
 
-	public CDMACell(int mcc, int sid, int nid, int bid, long lat, long lng) {
+    public CDMACell() {
+
+    }
+
+    public CDMACell(int mcc, int sid, int nid, int bid, long lat, long lng) {
 		this.mcc = mcc;
 		this.sid = sid;
 		this.nid = nid;

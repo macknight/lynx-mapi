@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 /**
  * 
  * @author zhufeng.liu
- * 
  * @version 13-8-8 下午4:07
  */
 public class GeoUtil {
